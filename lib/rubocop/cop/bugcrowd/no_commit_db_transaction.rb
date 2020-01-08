@@ -17,7 +17,7 @@ module RuboCop
         def on_send(node)
           add_offense(node) if within_change_or_up_method?(node) && commit_db_transaction?(node)
         end
+      end
     end
-    end
-end
+  end
 end

@@ -14,7 +14,7 @@ module RuboCop
         def on_send(node)
           add_offense(node) if !faker_config_classes?(node) && faker_call?(node)
         end
+      end
     end
-    end
-end
+  end
 end

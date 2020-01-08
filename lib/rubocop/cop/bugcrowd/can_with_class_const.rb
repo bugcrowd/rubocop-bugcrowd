@@ -24,7 +24,7 @@ module RuboCop
             )
           end
         end
+      end
     end
-    end
-end
+  end
 end

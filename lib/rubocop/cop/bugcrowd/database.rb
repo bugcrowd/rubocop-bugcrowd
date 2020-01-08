@@ -26,5 +26,5 @@ module RuboCop
         PATTERN
       end
     end
-end
+  end
 end

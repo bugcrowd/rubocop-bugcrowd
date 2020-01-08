@@ -20,7 +20,7 @@ module RuboCop
         COPCONTENT
 
         def_node_matcher :flipper_enable?, <<-PATTERN
-        (send (send (gvar #flipper_gvar?) :[] _) {:enable :disable} ...)
+          (send (send (gvar #flipper_gvar?) :[] _) {:enable :disable} ...)
         PATTERN
 
         def on_send(node)
@@ -29,13 +29,13 @@ module RuboCop
           add_offense(node)
         end
 
-      private
+        private
 
         # node matcher DSL considers '$' a special character so we need this
         def flipper_gvar?(sym)
           sym == :$flipper
         end
+      end
     end
-    end
-end
+  end
 end

@@ -23,16 +23,15 @@ module RuboCop
       # expect(page).to have_content(activity_message) # the slow action
       # ```
       # 2. Don't rely on something that is inherently slow
-      #   - instead of waiting for the page to be updated you can check that the correct behavior
-      #     is called (this can sometimes make the test less robust)
+      #   - instead of waiting for the page to be updated you can check
+      #     that the correct behavior is called
+      #     (this can sometimes make the test less robust)
       class SleepySpecs < RuboCop::Cop::Cop
-
-          # 🚨  Do not use sleep, use wait instead 🚨
-          # Sleep will wait for the given amount of time whether or not it needs to,
-          # wait will only wait until the matcher is found.
-          # https://semaphoreci.com/community/tutorials/5-tips-for-more-effective-capybara-tests
         MSG = <<~COPCONTENT
-          bizzle
+          🚨  Do not use sleep, use wait instead 🚨
+          Sleep will wait for the given amount of time whether or not it needs to,
+          wait will only wait until the matcher is found.
+          https://semaphoreci.com/community/tutorials/5-tips-for-more-effective-capybara-tests
         COPCONTENT
 
         def_node_matcher :sleeping?, <<-PATTERN
@@ -46,5 +45,5 @@ module RuboCop
         end
       end
     end
-end
+  end
 end

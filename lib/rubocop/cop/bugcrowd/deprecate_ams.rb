@@ -15,7 +15,7 @@ module RuboCop
         def on_class(node)
           add_offense(node) if ams_subclass?(node)
         end
+      end
     end
-    end
-end
+  end
 end

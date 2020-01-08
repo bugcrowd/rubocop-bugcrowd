@@ -27,7 +27,7 @@ module RuboCop
             add_offense(node)
           end
         end
+      end
     end
-    end
-end
+  end
 end

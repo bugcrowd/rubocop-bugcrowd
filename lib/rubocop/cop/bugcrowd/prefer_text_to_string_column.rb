@@ -11,11 +11,11 @@ module RuboCop
         COPCONTENT
 
         def_node_matcher :add_column_with_string?, <<-PATTERN
-        (send nil? :add_column ... (sym :string))
+          (send nil? :add_column ... (sym :string))
         PATTERN
 
         def_node_matcher :string_method_sent_to_var?, <<-PATTERN
-        (send (lvar _) :string ...)
+          (send (lvar _) :string ...)
         PATTERN
 
         def on_send(node)
@@ -28,7 +28,7 @@ module RuboCop
             add_offense(node)
           end
         end
+      end
     end
-    end
-end
+  end
 end

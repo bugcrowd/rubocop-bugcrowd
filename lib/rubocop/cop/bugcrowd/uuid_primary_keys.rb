@@ -15,9 +15,9 @@ module RuboCop
         def on_send(node)
           if within_change_or_up_method?(node) && create_table_with_uuid_pk?(node)
             add_offense(node)
-            end
+          end
         end
+      end
     end
-    end
-end
+  end
 end

@@ -6,3 +6,6 @@ Naming/FileName:
 
 Style/Documentation:
   Enabled: false
+
+Style/GuardClause:
+  Enabled: false

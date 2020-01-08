@@ -17,7 +17,7 @@ module RuboCop
         def on_send(node)
           add_offense(node) if describe_block? node
         end
+      end
     end
-    end
-end
+  end
 end
