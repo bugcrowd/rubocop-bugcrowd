@@ -17,11 +17,11 @@ jobs:
         ruby-version: ${{ matrix.ruby }}
     - name: Build with dependencies
       run: |
-        gem install bundler -v 1.17
+        gem install bundler -v 2.1.4
         bundle install
     - name: Test with rspec
       run: |
-        bundle exec rspec spec/
+        bundle exec rspec
     - name: Lint with rubocop
       run: |
         bundle exec rubocop
