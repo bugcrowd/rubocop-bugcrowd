@@ -6,12 +6,10 @@ module RuboCop
       class NoCommitDbTransaction < RuboCop::Cop::Cop
         include Database
 
-        MSG = <<~COPCONTENT
-          🚨 🚨 🚨 Don't use 'commit_db_transaction'. See https://bugcrowd.atlassian.net/wiki/spaces/DEV/pages/789708817/Database+Migrations
-        COPCONTENT
+        MSG = "🚨 🚨 🚨 Don't use 'commit_db_transaction'. See https://bugcrowd.atlassian.net/wiki/spaces/DEV/pages/789708817/Database+Migrations"
 
         def_node_matcher :commit_db_transaction?, <<-PATTERN
-        (send nil? :commit_db_transaction)
+          (send nil? :commit_db_transaction)
         PATTERN
 
         def on_send(node)

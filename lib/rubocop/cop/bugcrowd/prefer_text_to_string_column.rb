@@ -22,7 +22,7 @@ module RuboCop
 
           if add_column_with_string?(node)
             add_offense(node)
-          elsif node.ancestors[0].begin_type? && string_method_sent_to_var?(node)
+          elsif string_method_sent_to_var?(node)
             # within a block and calling '[blockvar].string'
             add_offense(node)
           end
