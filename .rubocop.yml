@@ -1,0 +1,15 @@
+inherit_from: .rubocop_todo.yml
+
+Naming/FileName:
+ Exclude:
+   - lib/rubocop-bugcrowd.rb
+
+Style/Documentation:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+   - spec/**/*.rb
