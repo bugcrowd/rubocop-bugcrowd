@@ -3,3 +3,6 @@ inherit_from: .rubocop_todo.yml
 Naming/FileName:
  Exclude:
    - lib/rubocop-bugcrowd.rb
+
+Style/Documentation:
+  Enabled: false
