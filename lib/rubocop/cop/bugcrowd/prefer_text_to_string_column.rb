@@ -6,12 +6,11 @@ module RuboCop
       class PreferTextToStringColumn < RuboCop::Cop::Cop
         include Database
 
-        MSG = <<~COPCONTENT
-          Prefer text column to string, e.g. add_column :table, :column, :text. See https://www.depesz.com/2010/03/02/charx-vs-varcharx-vs-varchar-vs-text/
-        COPCONTENT
+        MSG = 'Prefer text column to string, e.g. add_column :table, :column, :text. ' \
+              'See https://www.depesz.com/2010/03/02/charx-vs-varcharx-vs-varchar-vs-text/'
 
         def_node_matcher :add_column_with_string?, <<-PATTERN
-          (send nil? :add_column ... (sym :string))
+          (send nil? :add_column <(sym :string) ...>)
         PATTERN
 
         def_node_matcher :string_method_sent_to_var?, <<-PATTERN
