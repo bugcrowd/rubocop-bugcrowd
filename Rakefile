@@ -17,7 +17,7 @@ desc 'Generate a new cop with a template'
 task :new_cop, [:cop] do |_task, args|
   require 'rubocop'
 
-  cop_name = args.fetch(:cop) do
+  cop_name = args.to_h.fetch(:cop) do
     warn 'usage: bundle exec rake new_cop[Department/Name]'
     exit!
   end
