@@ -26,13 +26,12 @@ module RuboCop
 
           if add_column_with_string?(node)
             add_offense(node)
-          else
-            # create_table block
-            if string_method_sent_to_var?(node)
-              parent = node.parent.begin_type? ? node.parent.parent : node.parent
-              add_offense(node) if within_create_table_block?(parent)
-            end
+          elsif string_method_sent_to_var?(node)
+            # blocks that have multiple expressions within them get wrapped
+            # with a 'begin' type :shrug:
+            parent = node.parent.begin_type? ? node.parent.parent : node.parent
 
+            add_offense(node) if within_create_table_block?(parent)
           end
         end
       end
