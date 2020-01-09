@@ -13,8 +13,12 @@ module RuboCop
           (send nil? :add_column <(sym :string) ...>)
         PATTERN
 
+        def_node_matcher :within_create_table_block?, <<-PATTERN
+          (block #create_table? ...)
+        PATTERN
+
         def_node_matcher :string_method_sent_to_var?, <<-PATTERN
-          (send (lvar _) :string ...)
+          (send (lvar _var) :string ...)
         PATTERN
 
         def on_send(node)
@@ -22,9 +26,13 @@ module RuboCop
 
           if add_column_with_string?(node)
             add_offense(node)
-          elsif string_method_sent_to_var?(node)
-            # within a block and calling '[blockvar].string'
-            add_offense(node)
+          else
+            # create_table block
+            if string_method_sent_to_var?(node)
+              parent = node.parent.begin_type? ? node.parent.parent : node.parent
+              add_offense(node) if within_create_table_block?(parent)
+            end
+
           end
         end
       end

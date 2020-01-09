@@ -14,11 +14,7 @@ module RuboCop
         COPCONTENT
 
         def_node_search :create_table_with_uuid_column?, <<-PATTERN
-        (send (lvar _) :uuid (sym :uuid) ...)
-        PATTERN
-
-        def_node_matcher :create_table?, <<-PATTERN
-      (send nil? :create_table ...)
+          (send (lvar _) :uuid (sym :uuid) ...)
         PATTERN
 
         def on_send(node)

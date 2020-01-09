@@ -14,15 +14,19 @@ module RuboCop
           end
         end
 
+        def_node_matcher :create_table?, <<-PATTERN
+          (send nil? :create_table ...)
+        PATTERN
+
         def_node_matcher :create_table_with_uuid_pk?, <<-PATTERN
-      (send nil? :create_table _
-        (hash
-          (pair
-            (sym :id)
-            (sym :uuid)
+          (send nil? :create_table _
+            (hash
+              (pair
+                (sym :id)
+                (sym :uuid)
+              )
+            )
           )
-        )
-      )
         PATTERN
       end
     end
