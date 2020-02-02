@@ -5,6 +5,13 @@
 #   Enabled: pending
 #   VersionAdded: '0.80'
 
+Bugcrowd/DangerousConstMutation:
+  Include:
+    - 'spec/**/*.rb'
+  Exclude:
+    - 'spec/spec_helper.rb'
+  Enabled: true
+
 Bugcrowd/DangerousEnvMutation:
   Description: 'Prevent direct modification of ENV to prevent global state pollution'
   Include:

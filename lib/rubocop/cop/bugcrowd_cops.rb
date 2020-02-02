@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'bugcrowd/dangerous_const_mutation'
 require_relative 'bugcrowd/dangerous_env_mutation'
 require_relative 'bugcrowd/database'
 require_relative 'bugcrowd/faker'
