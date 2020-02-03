@@ -3,6 +3,7 @@
 require_relative 'bugcrowd/current_jumping_controller_boundary'
 require_relative 'bugcrowd/dangerous_env_mutation'
 require_relative 'bugcrowd/faker'
+require_relative 'bugcrowd/rails_configuration_mutation'
 
 require_relative 'bugcrowd/database'
 require_relative 'bugcrowd/disable_ddl_only_with_non_ddl_statements'
