@@ -45,23 +45,29 @@ module RuboCop
         # See https://github.com/rubocop-hq/rubocop/blob/master/lib/rubocop/node_pattern.rb
         #
         # For example
-        MSG = 'Avoid modifying rails configuration directly in test'
+        MSG = 'Avoid modifying rails configuration directly in specs, use stubbing instead'
 
         def setter?(method_name)
           method_name.to_s.end_with?('=')
         end
 
-        def_node_matcher :bad_method?, <<~PATTERN
-          (send (const nil? :Rails) :configuration ...)
+        def_node_matcher :is_setter?, <<~PATTERN
+          (send _ #setter? ...)
         PATTERN
 
-        def_node_matcher :other_bad_method?, <<~PATTERN
-          (send (send (const nil? :Rails) :application) :config ...)
+        def_node_search :is_rails_application_config?, <<~PATTERN
+          (send (send (const nil? :Rails) :application) :config)
+        PATTERN
+
+        def_node_search :is_rails_config?, <<~PATTERN
+          (send (const nil? :Rails) :configuration)
         PATTERN
 
         def on_send(node)
-          if bad_method?(node) || other_bad_method?(node)
-            add_offense
+          return unless is_setter?(node)
+
+          if is_rails_config?(node) || is_rails_application_config?(node)
+            add_offense(node)
           end
         end
       end

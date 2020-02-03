@@ -21,6 +21,9 @@ Bugcrowd/DangerousEnvMutation:
   Enabled: true
 
 Bugcrowd/RailsConfigurationMutation:
-  Description: 'TODO: Write a description of the cop.'
-  Enabled: pending
-  VersionAdded: '0.80'
+  Description: 'Prevent direct modification of Rails config to prevent global state pollution'
+  Include:
+    - 'spec/**/*.rb'
+  Exclude:
+    - 'spec/spec_helper.rb'
+  Enabled: true
