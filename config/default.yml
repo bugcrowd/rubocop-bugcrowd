@@ -19,3 +19,8 @@ Bugcrowd/DangerousEnvMutation:
   Exclude:
     - 'spec/spec_helper.rb'
   Enabled: true
+
+Bugcrowd/RailsConfigurationMutation:
+  Description: 'TODO: Write a description of the cop.'
+  Enabled: pending
+  VersionAdded: '0.80'
