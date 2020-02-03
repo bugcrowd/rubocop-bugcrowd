@@ -27,3 +27,8 @@ Bugcrowd/RailsConfigurationMutation:
   Exclude:
     - 'spec/spec_helper.rb'
   Enabled: true
+
+Bugcrowd/VisitInBeforeHook:
+  Description: 'TODO: Write a description of the cop.'
+  Enabled: pending
+  VersionAdded: '0.80'
