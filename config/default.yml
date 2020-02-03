@@ -4,3 +4,11 @@
 #   Description: 'TODO: Write a description of the cop.'
 #   Enabled: pending
 #   VersionAdded: '0.80'
+
+Bugcrowd/DangerousEnvMutation:
+  Description: 'Prevent direct modification of ENV to prevent global state pollution'
+  Include:
+    - 'spec/**/*.rb'
+  Exclude:
+    - 'spec/spec_helper.rb'
+  Enabled: true
