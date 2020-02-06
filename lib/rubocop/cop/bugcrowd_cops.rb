@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'bugcrowd/current_jumping_controller_boundary'
 require_relative 'bugcrowd/database'
 require_relative 'bugcrowd/faker'
 
