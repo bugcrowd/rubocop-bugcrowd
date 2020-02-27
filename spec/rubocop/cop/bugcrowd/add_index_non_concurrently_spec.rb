@@ -45,13 +45,33 @@ RSpec.describe RuboCop::Cop::Bugcrowd::AddIndexNonConcurrently do
 
   it 'does not register an offense when using concurrently' do
     expect_no_offenses(<<~RUBY)
-      add_index :table_name, :column, zibble: :bibble, algorithm: :concurrently
+      def change
+        add_index :table_name, :column, algorithm: :concurrently
+      end
     RUBY
   end
 
   it 'does not register an offense when using concurrently with other arg types' do
     expect_no_offenses(<<~RUBY)
-      add_index :table_name, [:derp, :dap], unique: true, algorithm: :concurrently
+      def change
+        add_index :table_name, [:derp, :dap], unique: true, algorithm: :concurrently
+      end
+    RUBY
+  end
+
+  it 'does not register an offense when using concurrently with other arg types within up' do
+    expect_no_offenses(<<~RUBY)
+      def up
+        add_index :table_name, [:derp, :dap], unique: true, algorithm: :concurrently
+      end
+    RUBY
+  end
+
+  it 'does not register an offense when using concurrently in random orders' do
+    expect_no_offenses(<<~RUBY)
+      def up
+        add_index :table_name, [:derp, :dap], algorithm: :concurrently, unique: true
+      end
     RUBY
   end
 end
