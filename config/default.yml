@@ -5,6 +5,12 @@
 #   Enabled: pending
 #   VersionAdded: '0.80'
 
+Bugcrowd/AddIndexNonConcurrently:
+  Description: 'Always add indexes concurrently'
+  Include:
+    - 'db/migrate/*.rb'
+  Enabled: true
+
 Bugcrowd/DangerousEnvMutation:
   Description: 'Prevent direct modification of ENV to prevent global state pollution'
   Include:
