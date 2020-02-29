@@ -16,3 +16,6 @@ Style/IfUnlessModifier:
 Metrics/BlockLength:
   Exclude:
    - spec/**/*.rb
+
+Layout/LineLength:
+  Max: 100
