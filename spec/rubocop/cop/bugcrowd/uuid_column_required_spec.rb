@@ -5,7 +5,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::UuidColumnRequired do
 
   let(:config) { RuboCop::Config.new }
 
-  it 'registers an offense for first argument' do
+  it 'registers an offense' do
     expect_offense(<<~RUBY)
       def change
         create_table :blah do |t|
@@ -17,11 +17,33 @@ RSpec.describe RuboCop::Cop::Bugcrowd::UuidColumnRequired do
     RUBY
   end
 
-  it do
+  it 'registers an offense' do
+    expect_offense(<<~RUBY)
+      def change
+        create_table :blah do |t|
+        ^^^^^^^^^^^^^^^^^^^^^ New tables should all have a uuid column of type uuid
+          t.uuid :uuid, null: false, default: 'gen_random_uuid()', index: { unique: false }
+          t.blah :blah
+        end
+      end
+    RUBY
+  end
+
+  it 'second line gives no offenses' do
     expect_no_offenses(<<~RUBY)
       def change
         create_table :blah do |t|
           t.blah :blah
+          t.uuid :uuid, null: false, default: 'gen_random_uuid()', index: { unique: true }
+        end
+      end
+    RUBY
+  end
+
+  it 'first line gives no offenses' do
+    expect_no_offenses(<<~RUBY)
+      def change
+        create_table :blah do |t|
           t.uuid :uuid, null: false, default: 'gen_random_uuid()', index: { unique: true }
         end
       end
