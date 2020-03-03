@@ -35,11 +35,27 @@ module RuboCop
           (send nil? :disable_ddl_transaction!)
         PATTERN
 
+        def_node_matcher :add_index_with_concurrent?, <<~PATTERN
+          (send nil? :add_index _ _
+            (hash
+              <(pair (sym :algorithm) (sym :concurrently)) ...>
+            )
+          )
+        PATTERN
+
+        def_node_matcher :add_index?, <<~PATTERN
+          (send nil? :add_index ...)
+        PATTERN
+
         def on_send(node)
           within_change_or_up_method?(node) &&
-            ddl_statement?(node) &&
+            (ddl_statement?(node) || add_index_without_concurrently?(node)) &&
             node.ancestors.any?(&method(:with_disable_ddl_transaction_set?)) &&
             add_offense(node)
+        end
+
+        def add_index_without_concurrently?(node)
+          add_index?(node) && !add_index_with_concurrent?(node)
         end
       end
     end
