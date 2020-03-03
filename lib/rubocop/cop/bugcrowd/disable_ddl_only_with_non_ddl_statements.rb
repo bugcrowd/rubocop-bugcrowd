@@ -31,22 +31,15 @@ module RuboCop
           (send nil? #ddl_method? ...)
         PATTERN
 
-        def_node_matcher :with_disable_ddl_transaction_set?, <<~PATTERN
-          (send nil? :create_table ...)
+        def_node_search :with_disable_ddl_transaction_set?, <<~PATTERN
+          (send nil? :disable_ddl_transaction!)
         PATTERN
 
-
         def on_send(node)
-          binding.pry
-          if within_change_or_up_method?(node) 
-            binding.pry
-            if ddl_statement?(node)
-              binding.pry
-              if with_disable_ddl_transaction_set?(node)
-                add_offense(node)
-              end
-            end
-          end
+          within_change_or_up_method?(node) &&
+            ddl_statement?(node) &&
+            with_disable_ddl_transaction_set?(node.parent.parent) &&
+            add_offense(node)
         end
       end
     end
