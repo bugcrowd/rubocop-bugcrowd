@@ -41,6 +41,34 @@ RSpec.describe RuboCop::Cop::Bugcrowd::DisableDdlOnlyWithNonDdlStatements do
     RUBY
   end
 
+  it 'registers an offense when adding a column with disable_ddl_transaction!' do
+    expect_offense(<<~RUBY)
+      class DerpMigration < ActiveRecord::Migration[5.2]
+        disable_ddl_transaction!
+
+        def up
+          add_column(:table_name, :offensive_name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Only disable ddl transactions for non-ddl statements
+        end
+      end
+    RUBY
+  end
+
+  it 'registers an offense deeply within ancestors' do
+    expect_offense(<<~RUBY)
+      class DerpMigration < ActiveRecord::Migration[5.2]
+        disable_ddl_transaction!
+
+        def up
+          4.times do |x|
+            add_column(:table_name, :offensive_name)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Only disable ddl transactions for non-ddl statements
+          end
+        end
+      end
+    RUBY
+  end
+
   it 'does not register an offense when using the directive with a non-ddl command' do
     expect_no_offenses(<<~RUBY)
       class DerpMigration < ActiveRecord::Migration[5.2]

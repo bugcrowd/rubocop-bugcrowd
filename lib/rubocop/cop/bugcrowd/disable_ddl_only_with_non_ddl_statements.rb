@@ -38,7 +38,7 @@ module RuboCop
         def on_send(node)
           within_change_or_up_method?(node) &&
             ddl_statement?(node) &&
-            with_disable_ddl_transaction_set?(node.parent.parent) &&
+            node.ancestors.any?(&method(:with_disable_ddl_transaction_set?)) &&
             add_offense(node)
         end
       end
