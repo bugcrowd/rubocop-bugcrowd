@@ -27,18 +27,10 @@ module RuboCop
           (send nil? :add_index ...)
         PATTERN
 
-        def_node_matcher :add_index_with_concurrent?, <<~PATTERN
-          (send nil? :add_index _ _
-            (hash
-              <(pair (sym :algorithm) (sym :concurrently)) ...>
-            )
-          )
-        PATTERN
-
         def on_send(node)
           within_change_or_up_method?(node) &&
             add_index?(node) &&
-            !add_index_with_concurrent?(node) &&
+            !add_index_concurrently?(node) &&
             add_offense(node)
         end
       end
