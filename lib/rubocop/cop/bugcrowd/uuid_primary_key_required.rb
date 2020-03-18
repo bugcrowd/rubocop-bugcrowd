@@ -6,26 +6,31 @@ module RuboCop
       class UuidPrimaryKeyRequired < RuboCop::Cop::Cop
         include Database
 
-        # BAD:
+        # Checks that tables are created with uuid primary keys
+        #
+        # @example
+        #
+        # # bad
         #  ```
         #  create_table :new_table_name do |t|
         #    t.text :name, null: false
         #  end
         # ```
-
-        # BAD:
+        #
+        # # bad
         #  ```
         #  create_table :new_table_name, id: :integer do |t|
         #    t.text :name, null: false
         #  end
         # ```
-
-        # GOOD:
+        #
+        # # good
         #  ```
         #  create_table :new_table_name, id: :uuid do |t|
         #    t.text :name, null: false
         #  end
         # ```
+        #
 
         MSG = 'All tables should all have a primary key of type :uuid'
 
