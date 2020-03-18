@@ -3,19 +3,22 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      #   See https://thoughtbot.com/blog/how-to-create-postgres-indexes-concurrently-in
-      #
       #   # bad
-      #   add_index :table_name, [:derp, :dap], unique: true, algorithm: :flunflurrently
+      #   class DerpMigration < ActiveRecord::Migration[5.2]
+      #     disable_ddl_transaction!
       #
-      #   # bad
-      #   add_index :table_name, :column_name, unique: true
+      #     def change
+      #       add_column(:table_name, :offensive_name)
+      #     end
+      #   end
       #
       #   # good
-      #   add_index :table_name, [:derp, :dap], unique: true, algorithm: :concurrently
-      #
-      #   # good
-      #   add_index :table_name, :column, zibble: :bibble, algorithm: :concurrently
+      #   class DerpMigration < ActiveRecord::Migration[5.2]
+      #     disable_ddl_transaction!
+      #     def change
+      #       add_index :table_name, :column_name, unique: true, algorithm: :concurrently
+      #     end
+      #   end
       class DisableDdlOnlyWithNonDdlStatements < Cop
         include Database
 
