@@ -43,6 +43,16 @@ RSpec.describe RuboCop::Cop::Bugcrowd::UuidPrimaryKeyRequired do
         RUBY
       end
     end
+
+    context 'when adding a column' do
+      it 'does not register an offense' do
+        expect_no_offenses(<<~RUBY)
+          def change
+            add_column :new_table, :new_column, :integer
+          end
+        RUBY
+      end
+    end
   end
 
   context 'within change method' do
@@ -79,6 +89,16 @@ RSpec.describe RuboCop::Cop::Bugcrowd::UuidPrimaryKeyRequired do
             ^^^^^^^^^^^^^^^^^^^^^^^ All tables should all have a primary key of type :uuid
               t.text :name, null: false
             end
+          end
+        RUBY
+      end
+    end
+
+    context 'when adding a column' do
+      it 'does not register an offense' do
+        expect_no_offenses(<<~RUBY)
+          def change
+            add_column :new_table, :new_column, :integer
           end
         RUBY
       end
