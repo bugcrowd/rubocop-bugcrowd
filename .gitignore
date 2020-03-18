@@ -9,3 +9,6 @@
 
 # rspec failure tracking
 .rspec_status
+
+# asdf version manager
+.tool-versions
