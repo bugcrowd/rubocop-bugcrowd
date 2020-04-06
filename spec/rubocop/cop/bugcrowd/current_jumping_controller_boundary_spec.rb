@@ -11,4 +11,10 @@ RSpec.describe RuboCop::Cop::Bugcrowd::CurrentJumpingControllerBoundary do
       ^^^^^^^^^^^ Curent should not be used outside of controllers. Pass it along to other systems that need it
     RUBY
   end
+
+  it 'does not register an offense for unrelated const' do
+    expect_no_offenses(<<~RUBY)
+      Flurrent.baz.bar
+    RUBY
+  end
 end
