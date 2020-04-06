@@ -5,6 +5,13 @@
 #   Enabled: pending
 #   VersionAdded: '0.80'
 
+Bugcrowd/CurrentJumpingControllerBoundary:
+  Description: 'Catches Current jumping controller boundaries'
+  Enabled: true
+  Exclude:
+    - 'spec/**/*.rb'
+    - 'app/controllers/**/*.rb'
+
 Bugcrowd/AddIndexNonConcurrently:
   Description: 'Always add indexes concurrently'
   Include:
