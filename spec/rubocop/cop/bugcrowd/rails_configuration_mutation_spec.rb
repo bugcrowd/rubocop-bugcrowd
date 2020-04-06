@@ -19,13 +19,13 @@ RSpec.describe RuboCop::Cop::Bugcrowd::RailsConfigurationMutation do
     RUBY
   end
 
-  it 'does not register an offense when using `#good_method`' do
+  it 'does not register an offense when stubbing' do
     expect_no_offenses(<<~RUBY)
-      Rails.configuration.x.gambo
+      allow(Rails.configuration.x).to receive(:gambo).and_return :blambo
     RUBY
   end
 
-  it 'does not register an offense when using `#good_method`' do
+  it do
     expect_no_offenses(<<~RUBY)
       Rails.application.config.x.gambo
     RUBY
