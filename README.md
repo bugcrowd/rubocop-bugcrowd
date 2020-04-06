@@ -28,6 +28,8 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 bundle exec rake 'new_cop[Bugcrowd/UseThisInsteadOfThat]'
 ```
 
+The Rubocop documentation is decent (but getting better) for writing a new cop https://docs.rubocop.org/en/stable/development/#add-a-new-cop
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
@@ -35,3 +37,14 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the Rubocop::Bugcrowd project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/bugcrowd/rubocop-bugcrowd/blob/master/CODE_OF_CONDUCT.md).
+
+
+## Contributors ✨
+
+Thanks goes to these contributors past/present/future:
+
+- [@adamrdavid](https://github.com/adamrdavid)
+- [@maschwenk](https://github.com/maschwenk)
+- [@tomlockwood](https://github.com/tomlockwood)
+
+

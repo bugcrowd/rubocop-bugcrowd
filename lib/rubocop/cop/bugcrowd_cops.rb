@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 require_relative 'bugcrowd/current_jumping_controller_boundary'
-require_relative 'bugcrowd/database'
+require_relative 'bugcrowd/dangerous_env_mutation'
 require_relative 'bugcrowd/faker'
 
+require_relative 'bugcrowd/database'
+require_relative 'bugcrowd/disable_ddl_only_with_non_ddl_statements'
 require_relative 'bugcrowd/prefer_text_to_string_column'
 require_relative 'bugcrowd/uuid_primary_keys'
 require_relative 'bugcrowd/no_commit_db_transaction'
 require_relative 'bugcrowd/uuid_column_required'
+require_relative 'bugcrowd/add_index_non_concurrently'
 
 require_relative 'bugcrowd/faker_in_specs'
 require_relative 'bugcrowd/faker_without_unique'

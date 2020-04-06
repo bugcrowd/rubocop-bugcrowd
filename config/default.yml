@@ -11,3 +11,17 @@ Bugcrowd/CurrentJumpingControllerBoundary:
   Exclude:
     - 'spec/**/*.rb'
     - 'app/controllers/**/*.rb'
+
+Bugcrowd/AddIndexNonConcurrently:
+  Description: 'Always add indexes concurrently'
+  Include:
+    - 'db/migrate/*.rb'
+  Enabled: true
+
+Bugcrowd/DangerousEnvMutation:
+  Description: 'Prevent direct modification of ENV to prevent global state pollution'
+  Include:
+    - 'spec/**/*.rb'
+  Exclude:
+    - 'spec/spec_helper.rb'
+  Enabled: true
