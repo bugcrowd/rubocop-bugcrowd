@@ -25,3 +25,11 @@ Bugcrowd/DangerousEnvMutation:
   Exclude:
     - 'spec/spec_helper.rb'
   Enabled: true
+
+Bugcrowd/RailsConfigurationMutation:
+  Description: 'Prevent direct modification of Rails config to prevent global state pollution'
+  Include:
+    - 'spec/**/*.rb'
+  Exclude:
+    - 'spec/spec_helper.rb'
+  Enabled: true
