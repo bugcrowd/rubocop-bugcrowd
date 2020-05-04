@@ -33,3 +33,9 @@ Bugcrowd/RailsConfigurationMutation:
   Exclude:
     - 'spec/spec_helper.rb'
   Enabled: true
+
+Bugcrowd/RequireOptionalForBelongsTo:
+  Description: 'blah'
+  Include:
+    - 'app/models/**/*.rb'
+  Enabled: true
