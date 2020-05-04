@@ -26,7 +26,14 @@ module RuboCop
         # # good
         # ```
         # class MyModel
-        #   polymorphic_belongs_to :other_model, optional: true
+        #   belongs_to :other_model
+        # end
+        # ```
+        #
+        # # good
+        # ```
+        # class MyModel
+        #   polymorphic_belongs_to :other_model, allowed_constants: [:Other, :Another]
         # end
         # ```
         #
