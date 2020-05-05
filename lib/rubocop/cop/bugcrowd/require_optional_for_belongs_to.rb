@@ -56,6 +56,15 @@ module RuboCop
             add_offense(node)
           end
         end
+
+        def autocorrect(node)
+          lambda do |corrector|
+            corrector.replace(
+              node.last_argument.loc.expression,
+              "#{node.last_argument.source}, optional: true"
+            )
+          end
+        end
       end
     end
   end

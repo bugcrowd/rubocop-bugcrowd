@@ -67,4 +67,15 @@ RSpec.describe RuboCop::Cop::Bugcrowd::RequireOptionalForBelongsTo do
       RUBY
     end
   end
+
+  it 'autocorrect to add optional: true' do
+    expect(
+      autocorrect_source(
+        "belongs_to :other_model, ->{ all }, class_name: 'Blah', polymorphic: true"
+      )
+    ).to eq(
+      'belongs_to :other_model, ->{ all }, ' \
+      "class_name: 'Blah', polymorphic: true, optional: true"
+    )
+  end
 end
