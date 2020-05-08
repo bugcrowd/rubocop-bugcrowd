@@ -5,9 +5,44 @@
 #   Enabled: pending
 #   VersionAdded: '0.80'
 
+Bugcrowd/CurrentJumpingControllerBoundary:
+  Description: 'Catches Current jumping controller boundaries'
+  Enabled: true
+  Exclude:
+    - 'spec/**/*.rb'
+    - 'app/controllers/**/*.rb'
+
+Bugcrowd/AddIndexNonConcurrently:
+  Description: 'Always add indexes concurrently'
+  Include:
+    - 'db/migrate/*.rb'
+  Enabled: true
+
+Bugcrowd/DangerousEnvMutation:
+  Description: 'Prevent direct modification of ENV to prevent global state pollution'
+  Include:
+    - 'spec/**/*.rb'
+  Exclude:
+    - 'spec/spec_helper.rb'
+  Enabled: true
+
+Bugcrowd/RailsConfigurationMutation:
+  Description: 'Prevent direct modification of Rails config to prevent global state pollution'
+  Include:
+    - 'spec/**/*.rb'
+  Exclude:
+    - 'spec/spec_helper.rb'
+  Enabled: true
+
 Bugcrowd/DangerousConstMutation:
   Include:
     - 'spec/**/*.rb'
   Exclude:
     - 'spec/spec_helper.rb'
+  Enabled: true
+
+Bugcrowd/RequireOptionalForBelongsTo:
+  Description: 'blah'
+  Include:
+    - 'app/models/**/*.rb'
   Enabled: true
