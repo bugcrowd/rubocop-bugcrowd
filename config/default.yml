@@ -5,6 +5,14 @@
 #   Enabled: pending
 #   VersionAdded: '0.80'
 
+Bugcrowd/BuildStrategiesInFeatureRequestSpecs:
+  Description: Avoid using build/build_stubed in feature/request specs
+  Enabled: true
+  Include:
+    - 'spec/features/**/*.rb'
+    - 'spec/requests/**/*.rb'
+    - 'spec/system/**/*.rb'
+
 Bugcrowd/CurrentJumpingControllerBoundary:
   Description: 'Catches Current jumping controller boundaries'
   Enabled: true

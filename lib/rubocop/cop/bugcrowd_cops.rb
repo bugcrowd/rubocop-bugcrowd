@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'bugcrowd/build_strategies_in_feature_request_specs'
 require_relative 'bugcrowd/current_jumping_controller_boundary'
 require_relative 'bugcrowd/dangerous_env_mutation'
 require_relative 'bugcrowd/faker'
