@@ -1,6 +1,6 @@
 # Rubocop::Bugcrowd
 
-Rubocop custom extension for rules specific to Bugcrowd's projects. Custom extension lets us share between projects and more easily test the cops in isolation. Many of these cops are not universally applicable to Rails/Ruby projects, they are simply a way of deprecating/prefering certain patterns as teams and projects grow.
+Rubocop custom extension for rules specific to Bugcrowd's projects. Custom extension lets us share between projects and more easily test the cops in isolation. Many of these cops are not universally applicable to Rails/Ruby projects, they are simply a way of deprecating/prefering certain patterns as teams and projects grow in the Bugcrowd organization.
 
 To experiment, run `bin/console` for an interactive prompt.
 
