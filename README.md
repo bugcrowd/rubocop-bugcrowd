@@ -28,7 +28,7 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 bundle exec rake 'new_cop[Bugcrowd/UseThisInsteadOfThat]'
 ```
 
-The Rubocop documentation is decent (but getting better) for writing a new cop https://docs.rubocop.org/en/stable/development/#add-a-new-cop
+The Rubocop [documentation](https://docs.rubocop.org/rubocop/development.html#create-a-new-cop) is decent (but getting better) for writing a new cop 
 
 ## License
 
