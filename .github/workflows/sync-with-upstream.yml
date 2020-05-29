@@ -15,7 +15,6 @@ jobs:
       - uses: docker://chinthakagodawita/autoupdate-action:v1
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          DRY_RUN: "true"
           PR_FILTER: "labelled"
           PR_LABELS: "sync-with-upstream"
           MERGE_MSG: "Merged with upstream branch"
