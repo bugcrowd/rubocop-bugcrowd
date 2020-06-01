@@ -10,5 +10,5 @@
 # rspec failure tracking
 .rspec_status
 
-# asdf version manager
-.tool-versions
+# txt editor files
+/.tool-versions
