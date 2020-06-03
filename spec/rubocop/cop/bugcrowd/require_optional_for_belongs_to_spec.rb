@@ -75,7 +75,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::RequireOptionalForBelongsTo do
       )
     ).to eq(
       'belongs_to :other_model, ->{ all }, ' \
-      "class_name: 'Blah', polymorphic: true, optional: true"
+      "class_name: 'Blah', polymorphic: true, optional: false"
     )
   end
 end

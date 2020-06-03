@@ -61,7 +61,7 @@ module RuboCop
           lambda do |corrector|
             corrector.replace(
               node.last_argument.loc.expression,
-              "#{node.last_argument.source}, optional: true"
+              "#{node.last_argument.source}, optional: false"
             )
           end
         end
