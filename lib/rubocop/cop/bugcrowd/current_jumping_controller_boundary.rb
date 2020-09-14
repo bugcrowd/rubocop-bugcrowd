@@ -14,7 +14,7 @@ module RuboCop
       #   Command.call(thing: Current.thingo)
       #
       class CurrentJumpingControllerBoundary < Cop
-        MSG = 'Curent should not be used outside of controllers. '\
+        MSG = 'Current should not be used outside of controllers. '\
               'Pass it along to other systems that need it'
 
         def_node_matcher :current_called?, <<~PATTERN
