@@ -10,15 +10,31 @@ RSpec.describe RuboCop::Cop::Bugcrowd::NoIncludeRunInTransaction do
       class NewCommand
         include Interactor
         include RunInTransaction
-        ^^^^^^^^^^^^^^^^^^^^^^^^ my new message
+        ^^^^^^^^^^^^^^^^^^^^^^^^ Prefer explicit transactions over wrapping entire command or organizer see: https://bugcrowd.atlassian.net/wiki/spaces/DEV/pages/589856783/How+to+use+activerecord+transactions
       end
     RUBY
   end
 
-  it 'does not register an offense when using concurrently' do
+  it do
+    expect_offense(<<~RUBY)
+      class Commands::NewCommand
+        include RunInTransaction
+        ^^^^^^^^^^^^^^^^^^^^^^^^ Prefer explicit transactions over wrapping entire command or organizer see: https://bugcrowd.atlassian.net/wiki/spaces/DEV/pages/589856783/How+to+use+activerecord+transactions
+        include Interactor
+      end
+    RUBY
+  end
+
+  it 'does not register an offense when using explicit transactions' do
     expect_no_offenses(<<~RUBY)
-      def change
-        add_index :table_name, :column, algorithm: :concurrently
+      class NewCommand
+        include Interactor
+
+        def call
+          ActiveRecord::Base.transaction do
+            new_record.save!
+          end
+        end
       end
     RUBY
   end

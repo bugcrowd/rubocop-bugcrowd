@@ -28,14 +28,15 @@ module RuboCop
       #
 
       class NoIncludeRunInTransaction < Cop
-        MSG = 'my new message'
+        MSG = 'Prefer explicit transactions over wrapping entire command or organizer ' \
+              'see: https://bugcrowd.atlassian.net/wiki/spaces/DEV/pages/589856783/How+to+use+activerecord+transactions'
 
         def_node_matcher :including_run_in_transaction?, <<~PATTERN
           (send nil? :include (const nil? :RunInTransaction))
         PATTERN
 
         def on_send(node)
-          add_offense(node)
+          add_offense(node) if including_run_in_transaction?(node)
         end
       end
     end
