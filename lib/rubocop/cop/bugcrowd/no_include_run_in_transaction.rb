@@ -9,14 +9,14 @@ module RuboCop
       #   asynchronously which can cause them to run even when the action has been rolled back.
       #
       #   # bad
-      #   def NewCommand
+      #   class NewCommand
       #     include Interactor
       #     include RunInTransaction
       #     ...
       #   end
       #
       #   # good
-      #   def NewCommand
+      #   class NewCommand
       #     include Interactor
       #
       #     def call
@@ -31,14 +31,11 @@ module RuboCop
         MSG = 'my new message'
 
         def_node_matcher :including_run_in_transaction?, <<~PATTERN
-          (send nil? :add_index ...)
+          (send nil? :include (const nil? :RunInTransaction))
         PATTERN
 
         def on_send(node)
-          within_change_or_up_method?(node) &&
-            add_index?(node) &&
-            !add_index_concurrently?(node) &&
-            add_offense(node)
+          add_offense(node)
         end
       end
     end

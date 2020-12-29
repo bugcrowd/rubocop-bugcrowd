@@ -7,7 +7,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::NoIncludeRunInTransaction do
 
   it do
     expect_offense(<<~RUBY)
-      def NewCommand
+      class NewCommand
         include Interactor
         include RunInTransaction
         ^^^^^^^^^^^^^^^^^^^^^^^^ my new message
