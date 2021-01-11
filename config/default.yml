@@ -41,6 +41,6 @@ Bugcrowd/RequireOptionalForBelongsTo:
   Enabled: true
 
 Bugcrowd/DangerousTransaction:
-  Description: Prefer ProperTransaction.open to custom transactions
+  Description: Prefer ProperTransaction.start to custom transactions
   Enabled: true
   VersionAdded: '0.80'

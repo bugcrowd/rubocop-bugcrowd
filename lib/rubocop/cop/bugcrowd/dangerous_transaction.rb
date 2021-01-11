@@ -5,7 +5,8 @@ module RuboCop
   module Cop
     module Bugcrowd
       class DangerousTransaction < Cop
-        MSG = "Use ProperTransaction.open instead of ActiveRecord's base, class, or instance-level transaction methods."
+        MSG = "Use ProperTransaction.start instead of ActiveRecord's base, " \
+              'class, or instance-level transaction methods.'
 
         def_node_matcher :consts_that_transaction_may_be_called_on, <<-PATTERN
           {(send (const nil? _) :transaction ...) (send (const (const nil? :ActiveRecord) :Base) :transaction ...)}
