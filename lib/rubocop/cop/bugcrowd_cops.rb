@@ -26,3 +26,4 @@ require_relative 'bugcrowd/travel_to_block_form'
 
 require_relative 'bugcrowd/require_optional_for_belongs_to'
 require_relative 'bugcrowd/no_unrestricted_polymorph'
+require_relative 'bugcrowd/no_event_deprecated_publish'
