@@ -44,3 +44,9 @@ Bugcrowd/DangerousTransaction:
   Description: Prefer ProperTransaction.start to custom transactions
   Enabled: true
   VersionAdded: '0.80'
+
+Bugcrowd/AvoidSampleInSpecs:
+  Description: Avoid using sample in spec as it can cause non-deterministic behavior
+  Enabled: true
+  Include:
+    - 'spec/**/*.rb'
