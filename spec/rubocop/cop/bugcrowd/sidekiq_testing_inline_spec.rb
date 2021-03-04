@@ -5,9 +5,18 @@ RSpec.describe RuboCop::Cop::Bugcrowd::SidekiqTestingInline do
 
   let(:config) { RuboCop::Config.new }
 
-  it 'registers an offence when calling Sidekiq::Testing::Inline!' do
+  it 'registers an offence when calling Sidekiq::Testing::Inline! with a block' do
     expect_offense(<<~RUBY)
-      Sidekiq::Testing.inline!
+      Sidekiq::Testing.inline! do
+      ^^^^^^^^^^^^^^^^^^^^^^^^ Prefer to drain the worker, then calling `Sidekiq::Testing.inline!`
+        subject
+      end
+    RUBY
+  end
+
+  it 'registers an offence when calling Sidekiq::Testing::Inline! with an inline block' do
+    expect_offense(<<~RUBY)
+      Sidekiq::Testing.inline! { subject }
       ^^^^^^^^^^^^^^^^^^^^^^^^ Prefer to drain the worker, then calling `Sidekiq::Testing.inline!`
     RUBY
   end

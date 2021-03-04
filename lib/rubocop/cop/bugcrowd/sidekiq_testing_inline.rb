@@ -15,6 +15,9 @@ module RuboCop
         #     subject
         #   end
         #
+        #   # bad
+        #   Sidekiq::Testing.inline! { subject }
+        #
         #   # good
         #   subject
         #   FeatureICareAboutWorker.drain
