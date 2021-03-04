@@ -22,7 +22,7 @@ module RuboCop
         MSG = 'Avoid using sample in spec as it can cause non-deterministic behavior'
 
         def_node_matcher :sample?, <<~PATTERN
-          (send ... :sample)
+          (send _ :sample ...)
         PATTERN
 
         def on_send(node)
