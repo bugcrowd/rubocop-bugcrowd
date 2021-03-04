@@ -26,6 +26,10 @@ Bugcrowd/DangerousEnvMutation:
     - 'spec/spec_helper.rb'
   Enabled: true
 
+Bugcrowd/PreferSensibleStringEnum:
+  Description: 'Prefer SensibleStringEnum over built in Rails enum'
+  Enabled: true
+
 Bugcrowd/RailsConfigurationMutation:
   Description: 'Prevent direct modification of Rails config to prevent global state pollution'
   Include:
