@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'bugcrowd/avoid_sample_in_specs'
 require_relative 'bugcrowd/current_jumping_controller_boundary'
 require_relative 'bugcrowd/dangerous_env_mutation'
 
