@@ -22,6 +22,8 @@ require:
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bundle exec rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
+Checkout the Rubocop docs for node pattern matching https://docs.rubocop.org/rubocop-ast/node_pattern.html. You can also use this handle tool for quickly pasting in sample code to see how the Ruby parser reads it https://nodepattern.herokuapp.com/
+
 #### Generating a new cop
 
 ```bash
