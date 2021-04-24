@@ -26,6 +26,12 @@ Bugcrowd/DangerousEnvMutation:
     - 'spec/spec_helper.rb'
   Enabled: true
 
+Bugcrowd/PreferRequestYieldingResponsePattern:
+  Description: 'Prefer request_yielding_response pattern for request specs'
+  Include:
+    - 'spec/requests/**/*.rb'
+  Enabled: true
+
 Bugcrowd/PreferSensibleStringEnum:
   Description: 'Prefer SensibleStringEnum over built in Rails enum'
   Enabled: true
