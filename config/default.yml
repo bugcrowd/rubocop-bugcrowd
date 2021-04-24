@@ -5,6 +5,13 @@
 #   Enabled: pending
 #   VersionAdded: '0.80'
 
+Bugcrowd/VisitInBeforeHook:
+  Description: "Avoid using 'visit' in before hooks, as it creates strict order dependencies that are hard to untangle"
+  Include:
+    - 'spec/features/**/*.rb'
+    - 'spec/system/**/*.rb'
+  Enabled: true
+
 Bugcrowd/CurrentJumpingControllerBoundary:
   Description: 'Catches Current jumping controller boundaries'
   Enabled: true
