@@ -5,7 +5,7 @@
 #   Enabled: pending
 #   VersionAdded: '0.80'
 
-Bugcrowd/VisitInBeforeHook:
+Bugcrowd/VisitInSpecBeforeHook:
   Description: "Avoid using 'visit' in before hooks, as it creates strict order dependencies that are hard to untangle"
   Include:
     - 'spec/features/**/*.rb'
