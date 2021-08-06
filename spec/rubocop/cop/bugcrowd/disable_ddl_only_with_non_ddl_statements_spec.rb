@@ -109,6 +109,18 @@ RSpec.describe RuboCop::Cop::Bugcrowd::DisableDdlOnlyWithNonDdlStatements do
     RUBY
   end
 
+  it 'does not register an offense when using the directive with a non-ddl command' do
+    expect_no_offenses(<<~RUBY)
+      class DerpMigration < ActiveRecord::Migration[5.2]
+        disable_ddl_transaction!
+
+        def change
+          remove_index :table_name, :column_name, unique: true, algorithm: :concurrently
+        end
+      end
+    RUBY
+  end
+
   it 'does not register an offense when not using the directive' do
     expect_no_offenses(<<~RUBY)
       class DerpMigration < ActiveRecord::Migration[5.2]
