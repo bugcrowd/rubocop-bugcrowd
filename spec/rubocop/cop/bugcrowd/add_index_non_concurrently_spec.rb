@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Bugcrowd::AddIndexNonConcurrently do # rubocop:disable Metrics/BlockLength
+RSpec.describe RuboCop::Cop::Bugcrowd::AddIndexNonConcurrently do
   subject(:cop) { described_class.new(config) }
 
   let(:config) { RuboCop::Config.new }
