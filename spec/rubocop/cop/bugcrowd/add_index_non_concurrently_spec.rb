@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Bugcrowd::AddIndexNonConcurrently do
+RSpec.describe RuboCop::Cop::Bugcrowd::AddIndexNonConcurrently do # rubocop:disable Metrics/BlockLength
   subject(:cop) { described_class.new(config) }
 
   let(:config) { RuboCop::Config.new }
@@ -39,6 +39,23 @@ RSpec.describe RuboCop::Cop::Bugcrowd::AddIndexNonConcurrently do
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
         add_index :table_name, :column_name, unique: true
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
+      end
+    RUBY
+  end
+
+  it do
+    expect_offense(<<~RUBY)
+      def up
+        remove_index :table_name, :column_name, unique: true
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
+      end
+    RUBY
+  end
+
+  it 'does not register an offense when using concurrently' do
+    expect_no_offenses(<<~RUBY)
+      def change
+        remove_index :table_name, :column, algorithm: :concurrently
       end
     RUBY
   end

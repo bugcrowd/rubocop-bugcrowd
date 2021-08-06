@@ -23,14 +23,9 @@ module RuboCop
               ' -- always add indexes concurrently, ' \
               'e.g. add_index :table_name, :column, algorithm: :concurrently'
 
-        def_node_matcher :add_index?, <<~PATTERN
-          (send nil? :add_index ...)
-        PATTERN
-
         def on_send(node)
           within_change_or_up_method?(node) &&
-            add_index?(node) &&
-            !add_index_concurrently?(node) &&
+            add_or_remove_index_without_concurrently?(node) &&
             add_offense(node)
         end
       end
