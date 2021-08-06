@@ -58,12 +58,12 @@ module RuboCop
           )
         PATTERN
 
-        def_node_matcher :ddl_method?, <<~PATTERN
+        def_node_matcher :requires_ddl_transaction_method?, <<~PATTERN
           {:create_join_table :create_table :add_column :add_foreign_key :add_reference :add_timestamps :change_column :change_column_default :change_column_null :change_table :rename_column :rename_index :rename_table :drop_table :drop_join_table :remove_column :remove_columns :remove_foreign_key :remove_reference :remove_timestamps}
         PATTERN
 
         def_node_matcher :ddl_statement?, <<~PATTERN
-          (send nil? #ddl_method? ...)
+          (send nil? #requires_ddl_transaction_method? ...)
         PATTERN
 
         def_node_search :with_disable_ddl_transaction_set?, <<~PATTERN
