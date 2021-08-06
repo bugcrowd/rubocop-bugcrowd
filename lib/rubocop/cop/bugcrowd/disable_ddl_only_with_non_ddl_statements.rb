@@ -26,7 +26,8 @@ module RuboCop
 
         def on_send(node)
           within_change_or_up_method?(node) &&
-            (ddl_statement?(node) || add_or_remove_index_without_concurrently?(node)) &&
+            (statement_requires_ddl_transaction?(node) ||
+              add_or_remove_index_without_concurrently?(node)) &&
             node.ancestors.any?(&method(:with_disable_ddl_transaction_set?)) &&
             add_offense(node)
         end
