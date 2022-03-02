@@ -9,7 +9,7 @@ module RuboCop
       #   expect(page).to have_content('blah')
       #
       #   # good
-      #    page.driver.wait_for_network_idle
+      #   page.driver.wait_for_network_idle
       #   expect(page).to have_content('blah')
       #
       # https://github.com/rubycdp/cuprite#network-traffic
