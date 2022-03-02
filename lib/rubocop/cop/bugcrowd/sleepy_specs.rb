@@ -8,16 +8,19 @@ module RuboCop
       #   sleep 1
       #   expect(page).to have_content('blah')
       #
-      #   # good – waiting network requests
+      #   # good
       #   page.driver.wait_for_network_idle
       #   expect(page).to have_content('blah')
       #
-      #   # also good – waiting for animations
+      #   # good
       #   expect(page).to have_content('blah', wait: 3)
+      #
+      # use wait_for_network_idle when waiting for network requests
       #
       # https://github.com/rubycdp/cuprite#network-traffic
       # https://github.com/rubycdp/ferrum#wait_for_idleoptions
       #
+      # use wait when waiting for frontend only animations
       # https://github.com/teamcapybara/capybara#asynchronous-javascript-ajax-and-friends
       # https://www.varvet.com/blog/why-wait_until-was-removed-from-capybara/
       # https://www.reddit.com/r/rails/comments/25xrdy/is_there_a_way_to_change_capybaras_wait_time_just/
