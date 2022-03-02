@@ -9,29 +9,24 @@ module RuboCop
       #   expect(page).to have_content('blah')
       #
       #   # good
-      #   expect(page).to have_content('blah', wait: 3)
+      #    page.driver.wait_for_network_idle
+      #   expect(page).to have_content('blah')
       #
-      # https://github.com/teamcapybara/capybara#asynchronous-javascript-ajax-and-friends
-      # https://www.varvet.com/blog/why-wait_until-was-removed-from-capybara/
-      # https://www.reddit.com/r/rails/comments/25xrdy/is_there_a_way_to_change_capybaras_wait_time_just/
+      # https://github.com/rubycdp/cuprite#network-traffic
+      # https://github.com/rubycdp/ferrum#wait_for_idleoptions
       #
       #
-      # Other methods of avoiding sleep:
-      # 1. Use an intermediate matcher
-      # ```
-      # expect(page).to have_content(flash_mesage) # the fast action
-      # expect(page).to have_content(activity_message) # the slow action
-      # ```
-      # 2. Don't rely on something that is inherently slow
+      # Other method of avoiding sleep:
+      # 1. Don't rely on something that is inherently slow
       #   - instead of waiting for the page to be updated you can check
       #     that the correct behavior is called
       #     (this can sometimes make the test less robust)
       class SleepySpecs < RuboCop::Cop::Cop
         MSG = <<~COPCONTENT
-          🚨  Do not use sleep, use wait instead 🚨
+          🚨  Do not use sleep, use page.driver.wait_for_network_idle instead 🚨
           Sleep will wait for the given amount of time whether or not it needs to,
-          wait will only wait until the matcher is found.
-          https://semaphoreci.com/community/tutorials/5-tips-for-more-effective-capybara-tests
+          wait_for_network_idle Natively waits for network idle.
+          https://github.com/rubycdp/cuprite#network-traffic
         COPCONTENT
 
         def_node_matcher :sleeping?, <<-PATTERN
