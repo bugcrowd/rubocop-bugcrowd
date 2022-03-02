@@ -11,7 +11,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::SleepySpecs do
   xit 'registers an offense when using `#bad_method`' do
     expect_offense(<<~RUBY)
       sleep(1)
-      ^^^^^^^^ 🚨  Do not use sleep, use page.driver.wait_for_network_idle instead 🚨
+      ^^^^^^^^ 🚨  Do not use sleep, wait_for_network_idle or wait instead 🚨
     RUBY
   end
 
