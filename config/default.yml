@@ -6,7 +6,7 @@
 #   VersionAdded: '0.80'
 
 Bugcrowd/ReplicaIdentityRequired:
-  Description: 'TODO: Write a description of the cop.'
+  Description: 'Checks that tables have a replica identity defined'
   Enabled: pending
   VersionAdded: '0.80'
 

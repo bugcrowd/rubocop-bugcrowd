@@ -1,60 +1,53 @@
 # frozen_string_literal: true
 
-# TODO: when finished, run `rake generate_cops_documentation` to update the docs
 module RuboCop
   module Cop
     module Bugcrowd
-      # TODO: Write cop description and example of bad / good code. For every
-      # `SupportedStyle` and unique configuration, there needs to be examples.
-      # Examples must have valid Ruby syntax. Do not use upticks.
-      #
-      # @example EnforcedStyle: bar (default)
-      #   # Description of the `bar` style.
-      #
-      #   # bad
-      #   bad_bar_method
-      #
-      #   # bad
-      #   bad_bar_method(args)
-      #
-      #   # good
-      #   good_bar_method
-      #
-      #   # good
-      #   good_bar_method(args)
-      #
-      # @example EnforcedStyle: foo
-      #   # Description of the `foo` style.
-      #
-      #   # bad
-      #   bad_foo_method
-      #
-      #   # bad
-      #   bad_foo_method(args)
-      #
-      #   # good
-      #   good_foo_method
-      #
-      #   # good
-      #   good_foo_method(args)
-      #
-      class ReplicaIdentityRequired < Cop
-        # TODO: Implement the cop in here.
+      class ReplicaIdentityRequired < RuboCop::Cop::Cop
+        # Checks that tables have a replica identity defined
         #
-        # In many cases, you can use a node matcher for matching node pattern.
-        # See https://github.com/rubocop-hq/rubocop/blob/master/lib/rubocop/node_pattern.rb
+        # @example
         #
-        # For example
-        MSG = 'Use `#good_method` instead of `#bad_method`.'
+        # # bad
+        #  ```
+        #  def change
+        #    create_table :new_table_name, id: :uuid do |t|
+        #      t.text :name, null: false
+        #    end
+        #  end
+        #  ```
+        #
+        # # good
+        #  ```
+        #  def change
+        #    create_table :new_table_name, id: :uuid do |t|
+        #      t.text :name, null: false
+        #    end
+        #    set_replica_identity(:full)
+        #  end
+        #  ```
 
-        def_node_matcher :bad_method?, <<~PATTERN
-          (send nil? :bad_method ...)
+        MSG = 'tables should have `set_replica_identity` called after `create_table`'
+
+        def within_change_or_up_method?(node)
+          node.each_ancestor(:def).any? do |ancestor|
+            ancestor.method?(:change) || ancestor.method?(:up)
+          end
+        end
+
+        def_node_matcher :create_table?, <<-PATTERN
+          (send nil? :create_table ...)
         PATTERN
 
-        def on_send(node)
-          return unless bad_method?(node)
+        def has_set_replica_identity?(node)
+          node.parent.parent.each_descendant(:send).any? do |child|
+            child.method?(:set_replica_identity)
+          end
+        end
 
-          add_offense(node)
+        def on_send(node)
+          # look for an `up` or `change` node with `create_table` that does not also have a `set_replica_identity`
+          within_change_or_up_method?(node) && create_table?(node) && !has_set_replica_identity?(node) && add_offense(node)
         end
       end
     end
