@@ -7,7 +7,7 @@
 
 Bugcrowd/ReplicaIdentityRequired:
   Description: 'Checks that tables have a replica identity defined'
-  Enabled: pending
+  Enabled: true
   VersionAdded: '0.80'
 
 Bugcrowd/VisitInSpecBeforeHook:
