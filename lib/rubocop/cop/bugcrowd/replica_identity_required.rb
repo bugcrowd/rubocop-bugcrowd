@@ -39,15 +39,16 @@ module RuboCop
           (send nil? :create_table ...)
         PATTERN
 
-        def has_set_replica_identity?(node)
+        def calls_set_replica_identity?(node)
           node.parent.parent.each_descendant(:send).any? do |child|
             child.method?(:set_replica_identity)
           end
         end
 
         def on_send(node)
-          # look for an `up` or `change` node with `create_table` that does not also have a `set_replica_identity`
-          within_change_or_up_method?(node) && create_table?(node) && !has_set_replica_identity?(node) && add_offense(node)
+          # look for an `up` or `change` node with `create_table` but not `set_replica_identity`
+          within_change_or_up_method?(node) && create_table?(node) && \
+            !calls_set_replica_identity?(node) && add_offense(node)
         end
       end
     end
