@@ -54,8 +54,8 @@ module RuboCop
 
         def autocorrect(node)
           lambda do |corrector|
-              table_sym = node.arguments[0].value
-              corrector.insert_after(node, "set_replica_identity(:#{table_sym}, :full)")
+            table_sym = node.arguments[0].value
+            corrector.insert_after(node, "set_replica_identity(:#{table_sym}, :full)")
           end
         end
       end
