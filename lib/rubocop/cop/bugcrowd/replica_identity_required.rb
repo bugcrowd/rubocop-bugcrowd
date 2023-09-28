@@ -27,7 +27,8 @@ module RuboCop
         #  end
         #  ```
 
-        MSG = 'tables should have `set_replica_identity` called after `create_table`'
+        MSG = 'tables should have `set_replica_identity` called after `create_table`, ' \
+         'probably with :identity = :full'
 
         def within_change_or_up_method?(node)
           node.each_ancestor(:def).any? do |ancestor|
