@@ -28,7 +28,7 @@ module RuboCop
         #  ```
 
         MSG = 'tables should have `set_replica_identity` called after `create_table`, ' \
-         'probably with :identity = :full'
+         'probably with set_replica_identity(:table_name, :full)'
 
         def within_change_or_up_method?(node)
           node.each_ancestor(:def).any? do |ancestor|
@@ -50,6 +50,13 @@ module RuboCop
           # look for an `up` or `change` node with `create_table` but not `set_replica_identity`
           within_change_or_up_method?(node) && create_table?(node) && \
             !calls_set_replica_identity?(node) && add_offense(node)
+        end
+
+        def autocorrect(node)
+          lambda do |corrector|
+              table_sym = node.arguments[0].value
+              corrector.insert_after(node, "set_replica_identity(:#{table_sym}, :full)")
+          end
         end
       end
     end
