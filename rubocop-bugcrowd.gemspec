@@ -10,6 +10,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Max Schwenk', 'Adam David']
   spec.email         = ['max@bugcrowd.com', 'adam@bugcrowd.com']
 
+  # This appeases rubocop Gemspec/RequiredRubyVersion, the version comes from the linter
+  spec.required_ruby_version = '>= 2.7.0'
+
   spec.summary       = 'Write a short summary, because RubyGems requires one.'
   spec.description   = 'Write a longer description or delete this line.'
   spec.license       = 'MIT'
@@ -40,7 +43,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop', '~> 0.79'
+  # corrector.insert_after fails on 0.79, bump to 0.93 fixes it
+  spec.add_development_dependency 'rubocop', '~> 0.93'
 
   spec.add_runtime_dependency 'rubocop'
 end

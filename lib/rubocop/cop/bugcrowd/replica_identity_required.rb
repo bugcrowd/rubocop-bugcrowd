@@ -55,7 +55,11 @@ module RuboCop
         def autocorrect(node)
           lambda do |corrector|
             table_sym = node.arguments[0].value
-            corrector.insert_after(node, "set_replica_identity(:#{table_sym}, :full)")
+            indent = node.source_range.source_line[/^(\s+)/] || ''
+            corrector.insert_after(
+              node.parent,
+              "\n#{indent}set_replica_identity(:#{table_sym}, :full)"
+            )
           end
         end
       end

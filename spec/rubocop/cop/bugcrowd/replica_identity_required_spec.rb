@@ -16,6 +16,26 @@ RSpec.describe RuboCop::Cop::Bugcrowd::ReplicaIdentityRequired do
           end
         RUBY
       end
+
+      it 'does autocorrecting to add set_replica_identity after the create_table' do
+        before = <<~RUBY
+          def up
+            create_table :new_table, id: :uuid do |t|
+              t.text :name, null: false
+            end
+          end
+        RUBY
+        after = <<~RUBY
+          def up
+            create_table :new_table, id: :uuid do |t|
+              t.text :name, null: false
+            end
+            set_replica_identity(:new_table, :full)
+          end
+        RUBY
+
+        expect(autocorrect_source(before)).to eq(after)
+      end
     end
     context 'with calling set_replica_identity' do
       it 'does not register an offense' do
@@ -24,7 +44,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::ReplicaIdentityRequired do
             create_table :new_table, id: :uuid do |t|
               t.text :name, null: false
             end
-            set_replica_identity(:full)
+            set_replica_identity(:new_table, :full)
           end
         RUBY
       end
