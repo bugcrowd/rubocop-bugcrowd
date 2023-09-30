@@ -10,9 +10,6 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Max Schwenk', 'Adam David']
   spec.email         = ['max@bugcrowd.com', 'adam@bugcrowd.com']
 
-  # This appeases rubocop Gemspec/RequiredRubyVersion, the version comes from the linter
-  spec.required_ruby_version = '>= 2.7.0'
-
   spec.summary       = 'Write a short summary, because RubyGems requires one.'
   spec.description   = 'Write a longer description or delete this line.'
   spec.license       = 'MIT'
