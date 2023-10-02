@@ -6,6 +6,7 @@ require_relative 'bugcrowd/avoid_sample_in_specs'
 require_relative 'bugcrowd/current_jumping_controller_boundary'
 require_relative 'bugcrowd/dangerous_env_mutation'
 require_relative 'bugcrowd/faker'
+require_relative 'bugcrowd/replica_identity_required'
 
 require_relative 'bugcrowd/prefer_request_yielding_response_pattern'
 require_relative 'bugcrowd/visit_in_spec_before_hook'

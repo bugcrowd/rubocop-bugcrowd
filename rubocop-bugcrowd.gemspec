@@ -40,7 +40,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop', '~> 0.79'
+  # corrector.insert_after fails on 0.79, bump to 0.93 fixes it
+  spec.add_development_dependency 'rubocop', '~> 0.93'
 
   spec.add_runtime_dependency 'rubocop'
 end

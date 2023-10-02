@@ -5,6 +5,11 @@
 #   Enabled: pending
 #   VersionAdded: '0.80'
 
+Bugcrowd/ReplicaIdentityRequired:
+  Description: 'Checks that tables have a replica identity defined'
+  Enabled: true
+  VersionAdded: '0.80'
+
 Bugcrowd/VisitInSpecBeforeHook:
   Description: "Avoid using 'visit' in before hooks, as it creates strict order dependencies that are hard to untangle"
   Include:

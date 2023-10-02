@@ -1,5 +1,8 @@
 inherit_from: .rubocop_todo.yml
 
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+
 Naming/FileName:
  Exclude:
    - lib/rubocop-bugcrowd.rb
