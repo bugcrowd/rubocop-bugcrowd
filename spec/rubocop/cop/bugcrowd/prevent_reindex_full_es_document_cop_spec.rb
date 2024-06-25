@@ -8,7 +8,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreventReindexFullESDocumentCop do
   it 'registers an offence when reindexing a full elasticsearch document' do
     expect_offense(<<~RUBY)
       ValisCommands::ReindexDocument.call(document_type: 'SubmissionDocument')
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Avoid reindexing the full Elasticsearch document. Consider reindexing only specific resource ids.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Avoid reindexing the full Elasticsearch document. Consider reindexing only specific resource ids.
     RUBY
   end
 
