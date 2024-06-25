@@ -20,7 +20,8 @@ module RuboCop
         # ```
         #
 
-        MSG = 'Avoid reindexing the full Elasticsearch document. Consider reindexing only specific resource ids.'
+        MSG = 'Avoid reindexing the full Elasticsearch document. ' \
+        'Consider reindexing only specific resource ids.'
 
         def_node_matcher :valis_reindex_document?, <<-PATTERN
           (send
