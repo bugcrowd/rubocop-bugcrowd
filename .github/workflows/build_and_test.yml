@@ -7,21 +7,21 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: [ '2.6', '2.7', '2' ]
+        ruby: ["3", "3.1", "3.2"]
     name: Test gem in ruby version ${{ matrix.ruby }}
     steps:
-    - uses: actions/checkout@v1
-    - name: Set up Ruby ${{ matrix.ruby }}
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-    - name: Build with dependencies
-      run: |
-        gem install bundler -v 2.1.4
-        bundle install
-    - name: Test with rspec
-      run: |
-        bundle exec rspec
-    - name: Lint with rubocop
-      run: |
-        bundle exec rubocop
+      - uses: actions/checkout@v1
+      - name: Set up Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Build with dependencies
+        run: |
+          gem install bundler -v 2.5.16
+          bundle install
+      - name: Test with rspec
+        run: |
+          bundle exec rspec
+      - name: Lint with rubocop
+        run: |
+          bundle exec rubocop
