@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class NoUnrestrictedPolymorph < RuboCop::Cop::Cop
+      class NoUnrestrictedPolymorph < Base
         # Ensures that the `polymorphic_belongs_to` method from SafePolymorphic is used instead
         # of the `polymorphic: true` option for `belongs_to`
         #

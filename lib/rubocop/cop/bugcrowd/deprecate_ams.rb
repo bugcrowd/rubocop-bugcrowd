@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class DeprecateAms < RuboCop::Cop::Cop
+      class DeprecateAms < Base
         MSG = <<~COPCONTENT
           🚨 ActiveModelSerializers are slow, unmaintained, and deprecated in our app. Please use Presenters (app/presenters) instead. 🚨
         COPCONTENT

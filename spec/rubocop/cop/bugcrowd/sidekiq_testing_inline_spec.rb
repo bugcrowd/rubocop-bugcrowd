@@ -8,7 +8,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::SidekiqTestingInline do
   it 'registers an offence when calling Sidekiq::Testing::Inline! with a block' do
     expect_offense(<<~RUBY)
       Sidekiq::Testing.inline! do
-      ^^^^^^^^^^^^^^^^^^^^^^^^ Prefer to drain the worker, then calling `Sidekiq::Testing.inline!`
+      ^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/SidekiqTestingInline: Prefer to drain the worker, then calling `Sidekiq::Testing.inline!`
         subject
       end
     RUBY
@@ -17,7 +17,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::SidekiqTestingInline do
   it 'registers an offence when calling Sidekiq::Testing::Inline! with an inline block' do
     expect_offense(<<~RUBY)
       Sidekiq::Testing.inline! { subject }
-      ^^^^^^^^^^^^^^^^^^^^^^^^ Prefer to drain the worker, then calling `Sidekiq::Testing.inline!`
+      ^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/SidekiqTestingInline: Prefer to drain the worker, then calling `Sidekiq::Testing.inline!`
     RUBY
   end
 

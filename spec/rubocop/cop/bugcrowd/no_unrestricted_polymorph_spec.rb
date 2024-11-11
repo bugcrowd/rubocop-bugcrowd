@@ -30,7 +30,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::NoUnrestrictedPolymorph do
       expect_offense(<<~RUBY)
         class MyModel
           belongs_to :other_model, polymorphic: true
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Always use `SafePolymorphic#polymorphic_belongs_to` to define polymorphic relationships
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/NoUnrestrictedPolymorph: Always use `SafePolymorphic#polymorphic_belongs_to` to define polymorphic relationships
         end
       RUBY
     end
@@ -41,7 +41,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::NoUnrestrictedPolymorph do
       expect_offense(<<~RUBY)
         class MyModel
           belongs_to :other_model, ->{ all }, class_name: 'Blah', polymorphic: true, optional: false
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Always use `SafePolymorphic#polymorphic_belongs_to` to define polymorphic relationships
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/NoUnrestrictedPolymorph: Always use `SafePolymorphic#polymorphic_belongs_to` to define polymorphic relationships
         end
       RUBY
     end

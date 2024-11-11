@@ -11,7 +11,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::ReplicaIdentityRequired do
         expect_offense(<<~RUBY)
           def up
             create_table :new_table, id: :uuid do |t|
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ tables should have `set_replica_identity` called after `create_table`, probably with set_replica_identity(:table_name, :full)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/ReplicaIdentityRequired: tables should have `set_replica_identity` called after `create_table`, probably with set_replica_identity(:table_name, :full)
             end
           end
         RUBY

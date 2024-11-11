@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class CanWithClassConst < RuboCop::Cop::Cop
+      class CanWithClassConst < Base
         MSG = <<~COPCONTENT
           🚨 Don't call can? with a class constant, as it will unexpectedly pass. Use an instance instead. (https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities-with-Blocks#only-for-object-attributes) 🚨
         COPCONTENT

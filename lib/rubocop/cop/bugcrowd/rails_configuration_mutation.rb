@@ -4,7 +4,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class RailsConfigurationMutation < Cop
+      class RailsConfigurationMutation < Base
         # TODO: Implement the cop in here.
         #
         # In many cases, you can use a node matcher for matching node pattern.

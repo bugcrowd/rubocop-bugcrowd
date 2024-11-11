@@ -35,7 +35,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::DisableDdlOnlyWithNonDdlStatements do
 
         def change
           add_column(:table_name, :offensive_name)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Only disable ddl transactions for non-ddl statements
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/DisableDdlOnlyWithNonDdlStatements: Only disable ddl transactions for non-ddl statements
         end
       end
     RUBY
@@ -48,7 +48,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::DisableDdlOnlyWithNonDdlStatements do
 
         def up
           add_column(:table_name, :offensive_name)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Only disable ddl transactions for non-ddl statements
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/DisableDdlOnlyWithNonDdlStatements: Only disable ddl transactions for non-ddl statements
         end
       end
     RUBY
@@ -61,7 +61,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::DisableDdlOnlyWithNonDdlStatements do
 
         def up
           create_table(:table_name) do |t|
-          ^^^^^^^^^^^^^^^^^^^^^^^^^ Only disable ddl transactions for non-ddl statements
+          ^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/DisableDdlOnlyWithNonDdlStatements: Only disable ddl transactions for non-ddl statements
             t.text :blah
           end
         end
@@ -77,7 +77,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::DisableDdlOnlyWithNonDdlStatements do
         def up
           4.times do |x|
             add_column(:table_name, :offensive_name)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Only disable ddl transactions for non-ddl statements
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/DisableDdlOnlyWithNonDdlStatements: Only disable ddl transactions for non-ddl statements
           end
         end
       end
@@ -91,7 +91,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::DisableDdlOnlyWithNonDdlStatements do
 
         def change
           add_index :table_name, :column_name, unique: true, algorithm: :flumflurrently
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Only disable ddl transactions for non-ddl statements
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/DisableDdlOnlyWithNonDdlStatements: Only disable ddl transactions for non-ddl statements
         end
       end
     RUBY

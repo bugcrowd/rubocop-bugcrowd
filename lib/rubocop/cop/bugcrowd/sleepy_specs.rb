@@ -26,7 +26,7 @@ module RuboCop
       #   - instead of waiting for the page to be updated you can check
       #     that the correct behavior is called
       #     (this can sometimes make the test less robust)
-      class SleepySpecs < RuboCop::Cop::Cop
+      class SleepySpecs < Base
         MSG = <<~COPCONTENT
           🚨  Do not use sleep, use wait instead 🚨
           Sleep will wait for the given amount of time whether or not it needs to,

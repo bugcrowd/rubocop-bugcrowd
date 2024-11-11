@@ -27,7 +27,7 @@ module RuboCop
       #   end
       #
 
-      class NoIncludeRunInTransaction < Cop
+      class NoIncludeRunInTransaction < Base
         MSG = 'Prefer explicit transactions over wrapping entire command or organizer ' \
               'see: https://bugcrowd.atlassian.net/wiki/spaces/DEV/pages/589856783/How+to+use+activerecord+transactions'
 

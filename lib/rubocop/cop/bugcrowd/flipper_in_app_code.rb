@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class FlipperInAppCode < RuboCop::Cop::Cop
+      class FlipperInAppCode < Base
         MSG = <<~COPCONTENT
           Generally we want to avoid setting flippers in code.
           Flippers should be temporary and used for strategic rollouts, not persistence -- use real databases instead

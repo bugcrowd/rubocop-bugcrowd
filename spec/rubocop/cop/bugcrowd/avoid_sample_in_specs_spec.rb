@@ -8,21 +8,21 @@ RSpec.describe RuboCop::Cop::Bugcrowd::AvoidSampleInSpecs do
   it 'registers an offense when using sample' do
     expect_offense(<<~RUBY)
       blah.zah.sample
-      ^^^^^^^^^^^^^^^ Avoid using sample in spec as it can cause non-deterministic behavior
+      ^^^^^^^^^^^^^^^ Bugcrowd/AvoidSampleInSpecs: Avoid using sample in spec as it can cause non-deterministic behavior
     RUBY
   end
 
   it 'registers an offense when using sample with single arg' do
     expect_offense(<<~RUBY)
       blah.zah.sample(3)
-      ^^^^^^^^^^^^^^^^^^ Avoid using sample in spec as it can cause non-deterministic behavior
+      ^^^^^^^^^^^^^^^^^^ Bugcrowd/AvoidSampleInSpecs: Avoid using sample in spec as it can cause non-deterministic behavior
     RUBY
   end
 
   it 'registers an offense when using sample with random' do
     expect_offense(<<~RUBY)
       blah.zah.sample(3, random: 1)
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Avoid using sample in spec as it can cause non-deterministic behavior
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/AvoidSampleInSpecs: Avoid using sample in spec as it can cause non-deterministic behavior
     RUBY
   end
 

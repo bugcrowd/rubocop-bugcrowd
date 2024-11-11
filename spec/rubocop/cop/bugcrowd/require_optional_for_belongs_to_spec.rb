@@ -40,7 +40,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::RequireOptionalForBelongsTo do
       expect_offense(<<~RUBY)
         class MyModel
           belongs_to :other_model
-          ^^^^^^^^^^^^^^^^^^^^^^^ Always specify whether belongs_to is optional using `optional: true/false`
+          ^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/RequireOptionalForBelongsTo: Always specify whether belongs_to is optional using `optional: true/false`
         end
       RUBY
     end
@@ -51,7 +51,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::RequireOptionalForBelongsTo do
       expect_offense(<<~RUBY)
         class MyModel
           belongs_to :other_model, ->{ all }, class_name: 'Blah', polymorphic: true
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Always specify whether belongs_to is optional using `optional: true/false`
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/RequireOptionalForBelongsTo: Always specify whether belongs_to is optional using `optional: true/false`
         end
       RUBY
     end
@@ -62,7 +62,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::RequireOptionalForBelongsTo do
       expect_offense(<<~RUBY)
         class MyModel
           belongs_to :other_model, ->{ all }, class_name: 'Blah', polymorphic: true
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Always specify whether belongs_to is optional using `optional: true/false`
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/RequireOptionalForBelongsTo: Always specify whether belongs_to is optional using `optional: true/false`
         end
       RUBY
     end

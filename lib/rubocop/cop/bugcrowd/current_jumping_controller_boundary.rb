@@ -13,7 +13,7 @@ module RuboCop
       #   # good
       #   Command.call(thing: Current.thingo)
       #
-      class CurrentJumpingControllerBoundary < Cop
+      class CurrentJumpingControllerBoundary < Base
         MSG = 'Current should not be used outside of controllers. '\
               'Pass it along to other systems that need it'
 

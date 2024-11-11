@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class ConstantAssignmentSpecs < RuboCop::Cop::Cop
+      class ConstantAssignmentSpecs < Base
         MSG = <<~COPCONTENT
           🚨  Constants persist across specs due to global nature 🚨
         COPCONTENT

@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class ReplicaIdentityRequired < RuboCop::Cop::Cop
+      class ReplicaIdentityRequired < Base
         # Checks that tables have a replica identity defined
         #
         # @example

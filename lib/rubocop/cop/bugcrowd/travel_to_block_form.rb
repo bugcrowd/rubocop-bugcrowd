@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class TravelToBlockForm < RuboCop::Cop::Cop
+      class TravelToBlockForm < Base
         MSG = <<~COPCONTENT
           🚨  Prefer travel_to in its block form 🚨
         COPCONTENT

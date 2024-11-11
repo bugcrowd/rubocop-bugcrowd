@@ -18,7 +18,7 @@ module RuboCop
       #
       #   enumerate_strings_for :source, [:web, :csv]
       #
-      class PreferSensibleStringEnum < Cop
+      class PreferSensibleStringEnum < Base
         MSG = 'Prefer SensibleStringEnum over built in Rails enum.'
 
         def_node_matcher :enum?, <<~PATTERN

@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class RequireOptionalForBelongsTo < RuboCop::Cop::Cop
+      class RequireOptionalForBelongsTo < Base
         # Ensures that the :optional argument is supplied to the belongs_to method
         # to help with upgrading to the new rails default
         #

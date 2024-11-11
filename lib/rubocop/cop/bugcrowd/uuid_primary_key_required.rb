@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class UuidPrimaryKeyRequired < RuboCop::Cop::Cop
+      class UuidPrimaryKeyRequired < Base
         include Database
 
         # Checks that tables are created with uuid primary keys
