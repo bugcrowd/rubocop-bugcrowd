@@ -4,6 +4,8 @@ module RuboCop
   module Cop
     module Bugcrowd
       class ReplicaIdentityRequired < Base
+        extend AutoCorrector
+
         # Checks that tables have a replica identity defined
         #
         # @example
@@ -48,18 +50,15 @@ module RuboCop
 
         def on_send(node)
           # look for an `up` or `change` node with `create_table` but not `set_replica_identity`
-          within_change_or_up_method?(node) && create_table?(node) && \
-            !calls_set_replica_identity?(node) && add_offense(node)
-        end
-
-        def autocorrect(node)
-          lambda do |corrector|
-            table_sym = node.arguments[0].value
-            indent = node.source_range.source_line[/^(\s+)/] || ''
-            corrector.insert_after(
-              node.parent,
-              "\n#{indent}set_replica_identity(:#{table_sym}, :full)"
-            )
+          if within_change_or_up_method?(node) && create_table?(node) &&
+             !calls_set_replica_identity?(node)
+            add_offense(node) do |corrector|
+              indent = node.source_range.source_line[/^(\s+)/] || ''
+              corrector.insert_after(
+                node.parent,
+                "\n#{indent}set_replica_identity(:#{node.arguments[0].value}, :full)"
+              )
+            end
           end
         end
       end

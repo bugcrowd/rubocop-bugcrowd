@@ -4,6 +4,8 @@ module RuboCop
   module Cop
     module Bugcrowd
       class RequireOptionalForBelongsTo < Base
+        extend AutoCorrector
+
         # Ensures that the :optional argument is supplied to the belongs_to method
         # to help with upgrading to the new rails default
         #
@@ -53,16 +55,12 @@ module RuboCop
 
         def on_send(node)
           if in_belongs_to?(node) && !belongs_to_with_optional?(node)
-            add_offense(node)
-          end
-        end
-
-        def autocorrect(node)
-          lambda do |corrector|
-            corrector.replace(
-              node.last_argument.loc.expression,
-              "#{node.last_argument.source}, optional: false"
-            )
+            add_offense(node) do |corrector|
+              corrector.replace(
+                node.last_argument.loc.expression,
+                "#{node.last_argument.source}, optional: false"
+              )
+            end
           end
         end
       end
