@@ -4,7 +4,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class VisitInSpecBeforeHook < Cop
+      class VisitInSpecBeforeHook < Base
         MSG = "Avoid calling 'visit' in before hooks. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1"
 
         def_node_matcher :begin_before_block?, <<~PATTERN

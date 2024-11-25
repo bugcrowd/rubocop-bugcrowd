@@ -7,8 +7,9 @@ require 'rubocop/bugcrowd/version'
 Gem::Specification.new do |spec|
   spec.name          = 'rubocop-bugcrowd'
   spec.version       = RuboCop::Bugcrowd::VERSION
-  spec.authors       = ['Max Schwenk', 'Adam David']
-  spec.email         = ['max@bugcrowd.com', 'adam@bugcrowd.com']
+  spec.required_ruby_version = '>= 3.0.0'
+  spec.authors       = ['Max Schwenk', 'Adam David', 'Abhinav Nain']
+  spec.email         = ['max@bugcrowd.com', 'adam@bugcrowd.com', 'abhinav.nain@bugcrowd.com']
 
   spec.summary       = 'Write a short summary, because RubyGems requires one.'
   spec.description   = 'Write a longer description or delete this line.'
@@ -37,11 +38,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'pry-byebug'
-  spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'pry-byebug', '3.10.1'
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'rspec'
   # corrector.insert_after fails on 0.79, bump to 0.93 fixes it
-  spec.add_development_dependency 'rubocop', '~> 0.93'
+  spec.add_development_dependency 'rubocop', '1.68.0'
 
-  spec.add_runtime_dependency 'rubocop'
+  spec.add_runtime_dependency 'rubocop', '1.68.0'
 end

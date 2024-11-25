@@ -8,14 +8,14 @@ RSpec.describe RuboCop::Cop::Bugcrowd::VisitInSpecBeforeHook do
   it 'registers an offense visit in single line block' do
     expect_offense(<<~RUBY)
       before { visit(blah) }
-      ^^^^^^^^^^^^^^^^^^^^^^ Avoid calling 'visit' in before hooks. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1
+      ^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/VisitInSpecBeforeHook: Avoid calling 'visit' in before hooks. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1
     RUBY
   end
 
   it 'registers an offense when using multiline block' do
     expect_offense(<<~RUBY)
       before do
-      ^^^^^^^^^ Avoid calling 'visit' in before hooks. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1
+      ^^^^^^^^^ Bugcrowd/VisitInSpecBeforeHook: Avoid calling 'visit' in before hooks. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1
         visit(blah)
         other_thing
       end
@@ -25,7 +25,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::VisitInSpecBeforeHook do
   it 'registers an offense when using multiline block regardless of order' do
     expect_offense(<<~RUBY)
       before do
-      ^^^^^^^^^ Avoid calling 'visit' in before hooks. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1
+      ^^^^^^^^^ Bugcrowd/VisitInSpecBeforeHook: Avoid calling 'visit' in before hooks. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1
         other_thing
         visit(blah)
       end

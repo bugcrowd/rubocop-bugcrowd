@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class NoCommitDbTransaction < RuboCop::Cop::Cop
+      class NoCommitDbTransaction < Base
         include Database
 
         MSG = "🚨 🚨 🚨 Don't use 'commit_db_transaction'. See https://bugcrowd.atlassian.net/wiki/spaces/DEV/pages/789708817/Database+Migrations"

@@ -8,7 +8,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::NoEventDeprecatedPublish do
   it 'registers an offence when calling deprecated_publish on EventStore' do
     expect_offense(<<~RUBY)
       EventStore.deprecated_publish(data: { blah: 'string' })
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer the new form of saving the event first within the same transaction as the data mutation, then calling `new_event.publish!` outside of the transaction.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/NoEventDeprecatedPublish: Prefer the new form of saving the event first within the same transaction as the data mutation, then calling `new_event.publish!` outside of the transaction.
     RUBY
   end
 

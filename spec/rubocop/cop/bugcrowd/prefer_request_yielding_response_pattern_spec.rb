@@ -8,7 +8,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreferRequestYieldingResponsePattern do
   it 'registers an offense visit in single line block' do
     expect_offense(<<~RUBY)
       before { post user_path }
-      ^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer request_yielding_response pattern. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1
+      ^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/PreferRequestYieldingResponsePattern: Prefer request_yielding_response pattern. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1
 
       it 'something happens' do
         expect(response).to have_http_status :ok
@@ -19,7 +19,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreferRequestYieldingResponsePattern do
   it 'registers an offense when using multiline block' do
     expect_offense(<<~RUBY)
       before do
-      ^^^^^^^^^ Prefer request_yielding_response pattern. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1
+      ^^^^^^^^^ Bugcrowd/PreferRequestYieldingResponsePattern: Prefer request_yielding_response pattern. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1
         post user_path
         other_thing
       end
@@ -29,7 +29,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreferRequestYieldingResponsePattern do
   it 'registers an offense when using multiline block regardless of order' do
     expect_offense(<<~RUBY)
       before do
-      ^^^^^^^^^ Prefer request_yielding_response pattern. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1
+      ^^^^^^^^^ Bugcrowd/PreferRequestYieldingResponsePattern: Prefer request_yielding_response pattern. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1
         other_thing
         post user_path
       end
@@ -39,7 +39,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreferRequestYieldingResponsePattern do
   it 'registers an offense when using other request methods' do
     expect_offense(<<~RUBY)
       before do
-      ^^^^^^^^^ Prefer request_yielding_response pattern. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1
+      ^^^^^^^^^ Bugcrowd/PreferRequestYieldingResponsePattern: Prefer request_yielding_response pattern. See https://gist.github.com/maschwenk/6eaf0a3cbf0e6f1432b923cbca7e34d1
         other_thing
         patch user_path
       end

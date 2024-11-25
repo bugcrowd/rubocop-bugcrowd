@@ -19,7 +19,7 @@ module RuboCop
       #       add_index :table_name, :column_name, unique: true, algorithm: :concurrently
       #     end
       #   end
-      class DisableDdlOnlyWithNonDdlStatements < Cop
+      class DisableDdlOnlyWithNonDdlStatements < Base
         include Database
 
         MSG = 'Only disable ddl transactions for non-ddl statements'

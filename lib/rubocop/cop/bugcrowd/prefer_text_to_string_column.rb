@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class PreferTextToStringColumn < RuboCop::Cop::Cop
+      class PreferTextToStringColumn < Base
         include Database
 
         MSG = 'Prefer text column to string, e.g. add_column :table, :column, :text. ' \

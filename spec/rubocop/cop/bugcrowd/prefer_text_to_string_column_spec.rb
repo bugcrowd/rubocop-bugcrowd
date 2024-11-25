@@ -9,7 +9,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreferTextToStringColumn do
     expect_offense(<<~RUBY)
       def change
         add_column :a, :b, :string
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer text column to string, e.g. add_column :table, :column, :text. See https://www.depesz.com/2010/03/02/charx-vs-varcharx-vs-varchar-vs-text/
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/PreferTextToStringColumn: Prefer text column to string, e.g. add_column :table, :column, :text. See https://www.depesz.com/2010/03/02/charx-vs-varcharx-vs-varchar-vs-text/
       end
     RUBY
   end
@@ -18,7 +18,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreferTextToStringColumn do
     expect_offense(<<~RUBY)
       def change
         add_column :a, :b, :string, array: true
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer text column to string, e.g. add_column :table, :column, :text. See https://www.depesz.com/2010/03/02/charx-vs-varcharx-vs-varchar-vs-text/
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/PreferTextToStringColumn: Prefer text column to string, e.g. add_column :table, :column, :text. See https://www.depesz.com/2010/03/02/charx-vs-varcharx-vs-varchar-vs-text/
       end
     RUBY
   end
@@ -27,7 +27,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreferTextToStringColumn do
     expect_offense(<<~RUBY)
       def change
         add_column :a, :b, :blah, :string, array: true
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer text column to string, e.g. add_column :table, :column, :text. See https://www.depesz.com/2010/03/02/charx-vs-varcharx-vs-varchar-vs-text/
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/PreferTextToStringColumn: Prefer text column to string, e.g. add_column :table, :column, :text. See https://www.depesz.com/2010/03/02/charx-vs-varcharx-vs-varchar-vs-text/
       end
     RUBY
   end
@@ -37,7 +37,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreferTextToStringColumn do
       def change
         create_table :a_table, blah: :dah do |z|
           z.string :col
-          ^^^^^^^^^^^^^ Prefer text column to string, e.g. add_column :table, :column, :text. See https://www.depesz.com/2010/03/02/charx-vs-varcharx-vs-varchar-vs-text/
+          ^^^^^^^^^^^^^ Bugcrowd/PreferTextToStringColumn: Prefer text column to string, e.g. add_column :table, :column, :text. See https://www.depesz.com/2010/03/02/charx-vs-varcharx-vs-varchar-vs-text/
         end
       end
     RUBY
@@ -49,7 +49,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreferTextToStringColumn do
         create_table :a_table, blah: :dah do |z|
           z.goober :name
           z.string :col
-          ^^^^^^^^^^^^^ Prefer text column to string, e.g. add_column :table, :column, :text. See https://www.depesz.com/2010/03/02/charx-vs-varcharx-vs-varchar-vs-text/
+          ^^^^^^^^^^^^^ Bugcrowd/PreferTextToStringColumn: Prefer text column to string, e.g. add_column :table, :column, :text. See https://www.depesz.com/2010/03/02/charx-vs-varcharx-vs-varchar-vs-text/
         end
       end
     RUBY

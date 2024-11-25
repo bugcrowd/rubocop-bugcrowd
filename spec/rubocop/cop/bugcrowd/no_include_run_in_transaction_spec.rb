@@ -10,7 +10,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::NoIncludeRunInTransaction do
       class NewCommand
         include Interactor
         include RunInTransaction
-        ^^^^^^^^^^^^^^^^^^^^^^^^ Prefer explicit transactions over wrapping entire command or organizer see: https://bugcrowd.atlassian.net/wiki/spaces/DEV/pages/589856783/How+to+use+activerecord+transactions
+        ^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/NoIncludeRunInTransaction: Prefer explicit transactions over wrapping entire command or organizer see: https://bugcrowd.atlassian.net/wiki/spaces/DEV/pages/589856783/How+to+use+activerecord+transactions
       end
     RUBY
   end
@@ -19,7 +19,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::NoIncludeRunInTransaction do
     expect_offense(<<~RUBY)
       class Commands::NewCommand
         include RunInTransaction
-        ^^^^^^^^^^^^^^^^^^^^^^^^ Prefer explicit transactions over wrapping entire command or organizer see: https://bugcrowd.atlassian.net/wiki/spaces/DEV/pages/589856783/How+to+use+activerecord+transactions
+        ^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/NoIncludeRunInTransaction: Prefer explicit transactions over wrapping entire command or organizer see: https://bugcrowd.atlassian.net/wiki/spaces/DEV/pages/589856783/How+to+use+activerecord+transactions
         include Interactor
       end
     RUBY

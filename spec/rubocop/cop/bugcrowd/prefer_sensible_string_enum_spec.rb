@@ -8,14 +8,14 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreferSensibleStringEnum do
   it 'registers an offense when using `#enum`' do
     expect_offense(<<~RUBY)
       enum species: { dog: 'dog' }
-      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer SensibleStringEnum over built in Rails enum.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/PreferSensibleStringEnum: Prefer SensibleStringEnum over built in Rails enum.
     RUBY
   end
 
   it 'registers an offense when using `#enum` in multiline' do
     expect_offense(<<~RUBY)
       enum species: {
-      ^^^^^^^^^^^^^^^ Prefer SensibleStringEnum over built in Rails enum.
+      ^^^^^^^^^^^^^^^ Bugcrowd/PreferSensibleStringEnum: Prefer SensibleStringEnum over built in Rails enum.
         dog: 'dog'
       }
     RUBY

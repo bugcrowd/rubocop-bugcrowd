@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class PreventReindexFullESDocumentCop < Cop
+      class PreventReindexFullESDocumentCop < Base
         #
         # @example
         #

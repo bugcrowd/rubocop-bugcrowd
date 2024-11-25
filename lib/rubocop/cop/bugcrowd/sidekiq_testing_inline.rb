@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class SidekiqTestingInline < Cop
+      class SidekiqTestingInline < Base
         #   Sidekiq::Testing.inline! can cause huge cascade of handlers to be called.
         #   When you use inline! Valis workers are triggered without you realizing,
         #   which create indexes that are not cleaned up by subsequent specs.

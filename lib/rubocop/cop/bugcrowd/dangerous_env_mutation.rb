@@ -12,7 +12,7 @@ module RuboCop
       #
       #   # good
       #   allow(Rails.configuration.x).to receive(blah).and_return 'zah'
-      class DangerousEnvMutation < Cop
+      class DangerousEnvMutation < Base
         MSG = 'Stub ENV or use configuration objects instead of ' \
               'directly modifying global ENV state'
 

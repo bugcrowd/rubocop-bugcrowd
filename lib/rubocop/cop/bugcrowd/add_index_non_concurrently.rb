@@ -16,7 +16,7 @@ module RuboCop
       #
       #   # good
       #   add_index :table_name, :column, zibble: :bibble, algorithm: :concurrently
-      class AddIndexNonConcurrently < Cop
+      class AddIndexNonConcurrently < Base
         include Database
 
         MSG = 'By default, Postgres locks writes to a table while creating an index on it ' \

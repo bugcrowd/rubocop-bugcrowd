@@ -9,7 +9,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::AddIndexNonConcurrently do
     expect_offense(<<~RUBY)
       def change
         add_index :table_name, [:derp, :dap], unique: true, algorithm: :flunflurrently
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/AddIndexNonConcurrently: By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
       end
     RUBY
   end
@@ -18,7 +18,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::AddIndexNonConcurrently do
     expect_offense(<<~RUBY)
       def change
         add_index :table_name, [:derp, :dap], unique: true
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/AddIndexNonConcurrently: By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
       end
     RUBY
   end
@@ -27,7 +27,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::AddIndexNonConcurrently do
     expect_offense(<<~RUBY)
       def up
         add_index :table_name, :column_name, unique: true
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/AddIndexNonConcurrently: By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
       end
     RUBY
   end
@@ -36,9 +36,9 @@ RSpec.describe RuboCop::Cop::Bugcrowd::AddIndexNonConcurrently do
     expect_offense(<<~RUBY)
       def change
         add_index :table_name, :column_name, unique: true
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/AddIndexNonConcurrently: By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
         add_index :table_name, :column_name, unique: true
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/AddIndexNonConcurrently: By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
       end
     RUBY
   end
@@ -47,7 +47,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::AddIndexNonConcurrently do
     expect_offense(<<~RUBY)
       def up
         remove_index :table_name, :column_name, unique: true
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/AddIndexNonConcurrently: By default, Postgres locks writes to a table while creating an index on it  -- always add indexes concurrently, e.g. add_index :table_name, :column, algorithm: :concurrently
       end
     RUBY
   end

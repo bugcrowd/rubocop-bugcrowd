@@ -23,7 +23,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::UuidPrimaryKeyRequired do
         expect_offense(<<~RUBY)
           def up
             create_table :new_table, id: :integer do |t|
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ All tables should all have a primary key of type :uuid
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/UuidPrimaryKeyRequired: All tables should all have a primary key of type :uuid
               t.text :name, null: false
             end
           end
@@ -36,7 +36,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::UuidPrimaryKeyRequired do
         expect_offense(<<~RUBY)
           def up
             create_table :new_table do |t|
-            ^^^^^^^^^^^^^^^^^^^^^^^ All tables should all have a primary key of type :uuid
+            ^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/UuidPrimaryKeyRequired: All tables should all have a primary key of type :uuid
               t.text :name, null: false
             end
           end
@@ -73,7 +73,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::UuidPrimaryKeyRequired do
         expect_offense(<<~RUBY)
           def change
             create_table :new_table, id: :integer do |t|
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ All tables should all have a primary key of type :uuid
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/UuidPrimaryKeyRequired: All tables should all have a primary key of type :uuid
               t.text :name, null: false
             end
           end
@@ -86,7 +86,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::UuidPrimaryKeyRequired do
         expect_offense(<<~RUBY)
           def change
             create_table :new_table do |t|
-            ^^^^^^^^^^^^^^^^^^^^^^^ All tables should all have a primary key of type :uuid
+            ^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/UuidPrimaryKeyRequired: All tables should all have a primary key of type :uuid
               t.text :name, null: false
             end
           end

@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class NoEventDeprecatedPublish < Cop
+      class NoEventDeprecatedPublish < Base
         #   The way we publish events, we don't want to publish the event externally if the
         #   transaction triggering it has been rolled back.  We also don't want the event to be
         #   rolled back in the case that processing the event fails so we do not lose record of

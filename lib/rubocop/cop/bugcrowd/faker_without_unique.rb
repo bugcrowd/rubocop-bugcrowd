@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class FakerWithoutUnique < RuboCop::Cop::Cop
+      class FakerWithoutUnique < Base
         include Faker
 
         MSG = <<~COPCONTENT

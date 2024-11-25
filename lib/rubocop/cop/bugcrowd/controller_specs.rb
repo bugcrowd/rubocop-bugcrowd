@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class ControllerSpecs < RuboCop::Cop::Cop
+      class ControllerSpecs < Base
         MSG = <<~COPCONTENT
           🚨  Controller specs are deprecated, please create request specs instead 🚨
           See https://everydayrails.com/2016/08/29/replace-rspec-controller-tests.html for an overview

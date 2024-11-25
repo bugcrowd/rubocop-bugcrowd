@@ -8,7 +8,7 @@ RSpec.describe RuboCop::Cop::Bugcrowd::DangerousEnvMutation do
   it 'registers an offense when modifying ENV directly' do
     expect_offense(<<~RUBY)
       ENV['anything'] = 'blah'
-      ^^^^^^^^^^^^^^^^^^^^^^^^ Stub ENV or use configuration objects instead of directly modifying global ENV state
+      ^^^^^^^^^^^^^^^^^^^^^^^^ Bugcrowd/DangerousEnvMutation: Stub ENV or use configuration objects instead of directly modifying global ENV state
     RUBY
   end
 

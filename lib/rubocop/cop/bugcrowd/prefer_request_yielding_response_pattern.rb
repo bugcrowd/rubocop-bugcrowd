@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class PreferRequestYieldingResponsePattern < Cop
+      class PreferRequestYieldingResponsePattern < Base
         #
         # @example
         #

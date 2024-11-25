@@ -18,7 +18,7 @@ module RuboCop
       #   expect(thing).to have_some_property
       #   expect(thing1).to have_some_property
       #
-      class AvoidSampleInSpecs < Cop
+      class AvoidSampleInSpecs < Base
         MSG = 'Avoid using sample in spec as it can cause non-deterministic behavior'
 
         def_node_matcher :sample?, <<~PATTERN

@@ -4,7 +4,7 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class DangerousTransaction < Cop
+      class DangerousTransaction < Base
         MSG = "Use ProperTransaction.start instead of ActiveRecord's base, " \
               'class, or instance-level transaction methods. See ' \
               'https://bugcrowd.atlassian.net/wiki/spaces/DEV/blog/2020/03/24/1126006819/' \
