@@ -6,7 +6,7 @@ module RuboCop
       class PreventBugsnagUsage < Cop
         MSG = 'Avoid using Bugsnag in the codebase. ' \
               'It has been replaced with ErrorNotifierService for error ' \
-              'notification handling. Please use ErrorNotifierService ' \
+              'notification handling. Please use ErrorNotifierService' \
               'instead.'
 
         def_node_matcher :bugsnag_usage?, <<-PATTERN
