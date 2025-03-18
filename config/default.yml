@@ -76,3 +76,9 @@ BugcrowdCops/PreventReindexFullESDocumentCop:
   Enabled: true
   Include:
     - 'app/**/*.rb'
+
+BugcrowdCops/PreventBugsnagUsage:
+  Enabled: true
+  Include:
+    - 'app/**/*.rb'
+    - 'lib/**/*.rb'
