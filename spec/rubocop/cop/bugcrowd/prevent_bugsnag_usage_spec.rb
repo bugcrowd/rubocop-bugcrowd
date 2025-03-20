@@ -10,16 +10,16 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreventBugsnagUsage, :config do
   end
 
   it 'registers an offense when Bugsnag is used' do
-    expect_offense(<<~RUBY, message:)
+    expect_offense(<<~RUBY)
       Bugsnag.error('Error')
-      ^^^^^^^^^^^^^^^^^^^^^^ %{message}
+      ^^^^^^^^^^^^^^^^^^^^^^ #{message}
     RUBY
   end
 
   it 'registers an offense when Bugsnag.notify is used' do
-    expect_offense(<<~RUBY, message:)
+    expect_offense(<<~RUBY)
       Bugsnag.notify('Error')
-      ^^^^^^^^^^^^^^^^^^^^^^^ %{message}
+      ^^^^^^^^^^^^^^^^^^^^^^^ #{message}
     RUBY
   end
 
