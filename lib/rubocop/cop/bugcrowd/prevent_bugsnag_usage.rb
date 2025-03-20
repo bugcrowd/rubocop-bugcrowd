@@ -3,31 +3,21 @@
 module RuboCop
   module Cop
     module Bugcrowd
-      class PreventBugsnagUsage < Cop
+      class PreventBugsnagUsage < RuboCop::Cop::Base
+        extend RuboCop::Cop::AutoCorrector
+
         MSG = 'Avoid using Bugsnag in the codebase. ' \
               'It has been replaced with ErrorNotifierService for error ' \
-              'notification handling. Please use ErrorNotifierService' \
-              'instead.'
+              'notification handling. Please use ErrorNotifierService instead.'
 
-        def_node_matcher :bugsnag_usage?, <<-PATTERN
-          (send
-            (const nil? :Bugsnag) :notify ...)
-        PATTERN
-
-        def_node_matcher :bugsnag_constant?, <<-PATTERN
-          (const nil? :Bugsnag)
+        def_node_matcher :bugsnag_usage?, <<~PATTERN
+          (send (const nil? :Bugsnag) ...)
         PATTERN
 
         def on_send(node)
-          if bugsnag_usage?(node)
-            add_offense(node, message: MSG)
-          end
-        end
+          return unless bugsnag_usage?(node)
 
-        def on_const(node)
-          if bugsnag_constant?(node)
-            add_offense(node, message: MSG)
-          end
+          add_offense(node, message: MSG)
         end
       end
     end
