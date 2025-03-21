@@ -4,9 +4,8 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreventBugsnagUsage, :config do
   subject(:cop) { described_class.new(config) }
 
   let(:message) do
-    'Avoid using Bugsnag in the codebase. ' \
-    'It has been replaced with ErrorTrackingService for error ' \
-    'notification handling. Please use ErrorTrackingService instead.'
+    'Do not use Bugsnag in the codebase, as its integration has been removed. ' \
+    'Use ErrorTrackingService for reporting errors.'
   end
 
   it 'registers an offense when Bugsnag is used' do

@@ -4,9 +4,8 @@ module RuboCop
   module Cop
     module Bugcrowd
       class PreventBugsnagUsage < RuboCop::Cop::Base
-        MSG = 'Avoid using Bugsnag in the codebase. ' \
-              'It has been replaced with ErrorTrackingService for error ' \
-              'notification handling. Please use ErrorTrackingService instead.'
+        MSG = 'Do not use Bugsnag in the codebase, as its integration has been removed. ' \
+              'Use ErrorTrackingService for reporting errors.'
 
         def on_send(node)
           add_offense(node, message: MSG) if node.receiver&.const_name == 'Bugsnag'
