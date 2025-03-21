@@ -5,8 +5,8 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreventBugsnagUsage, :config do
 
   let(:message) do
     'Avoid using Bugsnag in the codebase. ' \
-    'It has been replaced with ErrorNotifierService for error ' \
-    'notification handling. Please use ErrorNotifierService instead.'
+    'It has been replaced with ErrorTrackingService for error ' \
+    'notification handling. Please use ErrorTrackingService instead.'
   end
 
   it 'registers an offense when Bugsnag is used' do
@@ -23,9 +23,9 @@ RSpec.describe RuboCop::Cop::Bugcrowd::PreventBugsnagUsage, :config do
     RUBY
   end
 
-  it 'does not register an offense for ErrorNotifierService' do
+  it 'does not register an offense for ErrorTrackingService' do
     expect_no_offenses(<<~RUBY)
-      ErrorNotifierService.notify('Error')
+      ErrorTrackingService.notify('Error')
     RUBY
   end
 
