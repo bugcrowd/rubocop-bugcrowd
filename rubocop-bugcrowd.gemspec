@@ -38,11 +38,12 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
+  spec.add_development_dependency 'ostruct' # No longer default in Ruby 4.0; required by pry
   spec.add_development_dependency 'pry-byebug', '3.10.1'
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec'
-  # corrector.insert_after fails on 0.79, bump to 0.93 fixes it
-  spec.add_development_dependency 'rubocop', '1.68.0'
+  # Ruby 4.0 target support requires rubocop >= 1.81 (rubocop-ast >= 1.48)
+  spec.add_development_dependency 'rubocop', '>= 1.81.0'
 
-  spec.add_runtime_dependency 'rubocop', '1.68.0'
+  spec.add_runtime_dependency 'rubocop', '>= 1.81.0'
 end
