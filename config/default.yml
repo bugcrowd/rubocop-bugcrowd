@@ -72,12 +72,13 @@ Bugcrowd/AvoidSampleInSpecs:
   Enabled: true
   Include:
     - 'spec/**/*.rb'
-BugcrowdCops/PreventReindexFullESDocumentCop:
+
+Bugcrowd/PreventReindexFullESDocumentCop:
   Enabled: true
   Include:
     - 'app/**/*.rb'
 
-BugcrowdCops/PreventBugsnagUsage:
+Bugcrowd/PreventBugsnagUsage:
   Enabled: true
   Include:
     - 'app/**/*.rb'

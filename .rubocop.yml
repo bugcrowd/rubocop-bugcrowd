@@ -19,3 +19,8 @@ Style/IfUnlessModifier:
 Metrics/BlockLength:
   Exclude:
    - spec/**/*.rb
+
+AllCops:
+  TargetRubyVersion: 4.0
+  NewCops: disable
+  SuggestExtensions: false
